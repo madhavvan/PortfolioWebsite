@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Data Integration using ETL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
+        }
+        section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Healthcare Data Integration using ETL</h1>
+    </header>
+
+    <section>
+        <h2>Objective</h2>
+        <p>To automate the extraction, transformation, and loading (ETL) of healthcare data between systems while adhering to standards like HL7 FHIR and SNOMED CT.</p>
+    </section>
+
+    <section>
+        <h2>Project Components</h2>
+
+        <h3>1. Extraction</h3>
+        <p><strong>Description:</strong></p>
+        <ul>
+            <li>Data retrieved from OpenEMR FHIR API and SNOMED CT API.</li>
+            <li>Key endpoints:
+                <ul>
+                    <li><code>/Patient</code>: To fetch patient details.</li>
+                    <li><code>/Condition</code>: To retrieve patient-specific medical conditions.</li>
+                    <li>SNOMED CT <code>/concepts/{concept_id}/extended</code>: For hierarchical relationships of concepts.</li>
+                </ul>
+            </li>
+        </ul>
+        <p><strong>Tools Used:</strong> Python libraries (<code>requests</code>, <code>json</code>), OAuth 2.0 for authentication.</p>
+
+        <h3>2. Transformation</h3>
+        <p><strong>Description:</strong></p>
+        <ul>
+            <li>Cleaned and standardized extracted data to meet the schema requirements of the Primary Care EHR.</li>
+            <li>Techniques included:
+                <ul>
+                    <li>Mapping SNOMED concepts to parent and child terms.</li>
+                    <li>Validating and formatting fields like dates, addresses, and identifiers.</li>
+                </ul>
+            </li>
+        </ul>
+        <p><strong>Tools Used:</strong> Python for data manipulation and validation.</p>
+
+        <h3>3. Loading</h3>
+        <p><strong>Description:</strong></p>
+        <ul>
+            <li>Data posted to the Primary Care EHR system via its FHIR-compliant API.</li>
+            <li>Automated tasks include:
+                <ul>
+                    <li>Creating patient resources.</li>
+                    <li>Associating conditions with parent and child SNOMED terms.</li>
+                </ul>
+            </li>
+        </ul>
+        <p><strong>Tools Used:</strong> Python for API interaction and data posting.</p>
+    </section>
+
+    <section>
+        <h2>Key Tasks</h2>
+        <ul>
+            <li><strong>Task 1:</strong> Parent Concept Creation - Fetched and mapped parent terms from SNOMED CT.</li>
+            <li><strong>Task 2:</strong> Child Concept Creation - Mapped child terms and posted as new conditions.</li>
+            <li><strong>Task 3:</strong> Observation Posting - Manually formatted observation data in FHIR-compliant JSON.</li>
+            <li><strong>Task 4:</strong> Medical Procedure Documentation - Posted procedures with necessary details.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Challenges & Resolutions</h2>
+        <ol>
+            <li><strong>Endpoint Issues:</strong> Addressed with thorough testing and refining queries.</li>
+            <li><strong>Schema Mismatches:</strong> Overcome using standardized templates.</li>
+            <li><strong>Error Handling:</strong> Implemented robust validation for missing or incomplete data.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Technologies Used</h2>
+        <ul>
+            <li><strong>APIs:</strong> HL7 FHIR, SNOMED CT.</li>
+            <li><strong>Programming Language:</strong> Python.</li>
+            <li><strong>Libraries:</strong> <code>requests</code>, <code>json</code>, <code>datetime</code>.</li>
+            <li><strong>Standards:</strong> FHIR, SNOMED CT.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Project Insights</h2>
+        <p>This project demonstrates how ETL processes can streamline healthcare data integration, ensuring compliance with industry standards and enhancing interoperability between systems.</p>
+    </section>
+
+</body>
+</html>
