@@ -3,76 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autply - Project Details</title>
+    <title>Autply - Revolutionizing Communication</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to right, #2c3e50, #4ca1af);
-            color: #fff;
+            background: linear-gradient(135deg, #1e3c72, #2a5298, #6dd5fa);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        header {
             text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.6);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        h1 {
-            margin-top: 50px;
-            font-size: 3em;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        header h1 {
+            font-size: 3.5em;
+            animation: fadeIn 2s;
         }
 
-        h2 {
-            font-size: 2em;
-            margin-top: 30px;
-            color: #1abc9c;
-        }
-
-        p {
-            font-size: 1.2em;
-            margin: 20px auto;
-            width: 70%;
-            line-height: 1.6;
-        }
-
-        a {
-            color: #1abc9c;
-            text-decoration: none;
+        header p {
             font-size: 1.2em;
             margin-top: 20px;
-            display: inline-block;
         }
 
         section {
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            padding: 50px 10%;
+            text-align: left;
         }
 
-        ul {
-            list-style-type: none;
+        section h2 {
+            color: #1abc9c;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .feature-list, .tool-list {
+            margin: 20px 0;
             padding: 0;
+            list-style: none;
         }
 
-        li {
-            margin: 10px 0;
-            font-size: 1.1em;
+        .feature-list li, .tool-list li {
+            font-size: 1.2em;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #ccc;
+            text-align: center;
+            padding: 30px 20px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        footer a {
+            color: #1abc9c;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body>
-    <h1>Autply</h1>
-    <p>Autply is a cutting-edge mobile application designed to enhance your messaging experience by seamlessly integrating AI-driven solutions into daily communication. Built with the latest technology stack, Autply leverages the power of accessibility services and advanced AI to simplify how users interact with messaging apps like WhatsApp.</p>
-    
+    <header>
+        <h1>Autply</h1>
+        <p>Revolutionizing Communication with AI-Driven Messaging Solutions</p>
+    </header>
+
+    <section>
+        <h2>Introduction</h2>
+        <p>Autply is a cutting-edge mobile application designed to enhance your messaging experience by seamlessly integrating AI-driven solutions into daily communication. With Autply, intelligent conversations are just a tap away.</p>
+    </section>
+
     <section>
         <h2>Core Functionality</h2>
-        <p>At the heart of Autply is its ability to intelligently listen to incoming message notifications, process their content, and instantly generate relevant AI-driven response suggestions.</p>
-        <ul>
+        <p>Autply intelligently listens to incoming message notifications, processes their content, and instantly generates relevant AI-driven response suggestions. Using state-of-the-art natural language processing, Autply ensures every suggested reply aligns contextually with the received message.</p>
+        <ul class="feature-list">
             <li><strong>Notification Listener:</strong> Automatically detects and reads incoming messages from WhatsApp.</li>
             <li><strong>AI-Powered Reply Suggestions:</strong> Generates meaningful replies tailored to the conversation.</li>
             <li><strong>Instant Access:</strong> Displays replies through a user-friendly pop-up notification for quick action.</li>
@@ -80,30 +100,34 @@
     </section>
 
     <section>
-        <h2>Streamlined User Experience</h2>
-        <p>Autply focuses on making messaging effortless:</p>
-        <ul>
-            <li><strong>Automated Message Handling:</strong> Reads and processes message notifications without user intervention.</li>
-            <li><strong>Quick Action Pop-Ups:</strong> Provides a non-intrusive yet efficient interface to view AI-suggested responses.</li>
-            <li><strong>Easy Sending:</strong> Automatically fills the WhatsApp reply box with the suggested text.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>Innovation in Action</h2>
-        <p>Autply's deep integration with Android’s Accessibility Services enhances productivity and delivers a smoother messaging experience.</p>
-        <ul>
-            <li>Identifies key interface components like the reply box and send button.</li>
-            <li>Automates repetitive tasks to enhance productivity.</li>
-            <li>Ensures security and user control.</li>
-        </ul>
-    </section>
-
-    <section>
         <h2>Technical Excellence</h2>
-        <p>Built on a robust technical foundation to ensure high performance and reliability:</p>
-        <ul>
-            <li><strong>Kotlin-Powered Development:</strong> Optimized for Android with clean, efficient code.</li>
-            <li><strong>AI Integration:</strong> Utilizes industry-leading AI tools like ChatGPT for response generation.</li>
-            <li><strong>Dynamic Updates:</strong> Adapts to WhatsApp interface changes for long-term compatibility.</li>
-        </
+        <p>Autply is built on a robust technical foundation to ensure high performance and reliability:</p>
+        <ul class="tool-list">
+            <li><strong>Kotlin:</strong> Optimized for Android with clean and maintainable code.</li>
+            <li><strong>Jetpack Compose:</strong> For building a dynamic, user-friendly UI.</li>
+            <li><strong>ChatGPT API:</strong> For generating intelligent and contextually relevant replies.</li>
+            <li><strong>Accessibility Services:</strong> Enables interaction with WhatsApp notifications and automates response suggestions.</li>
+            <li><strong>OkHttp:</strong> Facilitates seamless communication with the ChatGPT API.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Streamlined User Experience</h2>
+        <p>Autply focuses on making messaging effortless by providing users with automated message handling and non-intrusive quick-action pop-ups.</p>
+    </section>
+
+    <section>
+        <h2>Future Roadmap</h2>
+        <p>Exciting upcoming features:</p>
+        <ul class="feature-list">
+            <li>Support for other messaging platforms like Telegram and Instagram.</li>
+            <li>Advanced customization for AI-generated replies.</li>
+            <li>Group chat compatibility.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Learn more about Autply and our journey to redefine communication. Visit <a href="index.html">our portfolio</a>.</p>
+    </footer>
+</body>
+</html>
