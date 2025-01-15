@@ -8,44 +8,91 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 20px;
-            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f4f8;
             color: #333;
         }
-        h1, h2, h3 {
-            color: #0056b3;
+        header {
+            background: linear-gradient(90deg, #0056b3, #00c6ff);
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
         section {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
             background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            color: #0056b3;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #c7254e;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #0056b3;
+            color: #fff;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .glow-effect {
+            text-shadow: 0 0 8px rgba(0, 198, 255, 0.7), 0 0 16px rgba(0, 198, 255, 0.7);
+        }
+        .highlight {
+            color: #00c6ff;
+            font-weight: bold;
+        }
+        .fade-in {
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Healthcare Data Integration using ETL</h1>
+        <h1 class="glow-effect">Healthcare Data Integration using ETL</h1>
     </header>
 
-    <section>
+    <section class="fade-in">
         <h2>Objective</h2>
-        <p>To automate the extraction, transformation, and loading (ETL) of healthcare data between systems while adhering to standards like HL7 FHIR and SNOMED CT.</p>
+        <p>To automate the extraction, transformation, and loading (ETL) of healthcare data between systems while adhering to standards like <span class="highlight">HL7 FHIR</span> and <span class="highlight">SNOMED CT</span>.</p>
     </section>
 
-    <section>
+    <section class="fade-in">
         <h2>Project Components</h2>
 
         <h3>1. Extraction</h3>
         <p><strong>Description:</strong></p>
         <ul>
-            <li>Data retrieved from OpenEMR FHIR API and SNOMED CT API.</li>
+            <li>Data retrieved from <span class="highlight">OpenEMR FHIR API</span> and <span class="highlight">SNOMED CT API</span>.</li>
             <li>Key endpoints:
                 <ul>
                     <li><code>/Patient</code>: To fetch patient details.</li>
                     <li><code>/Condition</code>: To retrieve patient-specific medical conditions.</li>
-                    <li>SNOMED CT <code>/concepts/{concept_id}/extended</code>: For hierarchical relationships of concepts.</li>
+                    <li><code>/concepts/{concept_id}/extended</code>: For hierarchical relationships of concepts.</li>
                 </ul>
             </li>
         </ul>
@@ -78,7 +125,7 @@
         <p><strong>Tools Used:</strong> Python for API interaction and data posting.</p>
     </section>
 
-    <section>
+    <section class="fade-in">
         <h2>Key Tasks</h2>
         <ul>
             <li><strong>Task 1:</strong> Parent Concept Creation - Fetched and mapped parent terms from SNOMED CT.</li>
@@ -88,7 +135,7 @@
         </ul>
     </section>
 
-    <section>
+    <section class="fade-in">
         <h2>Challenges & Resolutions</h2>
         <ol>
             <li><strong>Endpoint Issues:</strong> Addressed with thorough testing and refining queries.</li>
@@ -97,7 +144,7 @@
         </ol>
     </section>
 
-    <section>
+    <section class="fade-in">
         <h2>Technologies Used</h2>
         <ul>
             <li><strong>APIs:</strong> HL7 FHIR, SNOMED CT.</li>
@@ -107,10 +154,13 @@
         </ul>
     </section>
 
-    <section>
+    <section class="fade-in">
         <h2>Project Insights</h2>
         <p>This project demonstrates how ETL processes can streamline healthcare data integration, ensuring compliance with industry standards and enhancing interoperability between systems.</p>
     </section>
 
+    <footer>
+        &copy; 2025 ETL Project. All Rights Reserved.
+    </footer>
 </body>
 </html>
