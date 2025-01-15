@@ -56,6 +56,14 @@
         section {
             padding: 60px 20px;
             position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         section:nth-child(odd) {
@@ -218,5 +226,21 @@
             <p>With Autply, you’re not just using a messaging tool; you’re embracing a smarter way to connect. The app is designed for users who value innovation, productivity, and meaningful conversations. Welcome to the future of messaging—welcome to Autply.</p>
         </div>
     </footer>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
