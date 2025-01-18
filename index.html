@@ -136,6 +136,16 @@
             margin: 0;
             padding: 20px;
         }
+        .social-icons a {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            color: #0077b5; /* LinkedIn blue */
+        }
 
     </style>
 </head>
@@ -147,7 +157,7 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
-        <img src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+        <img src="images\profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
     </header>
     
     <section id="about">
@@ -180,16 +190,22 @@
     </section>
     
 
+<!-- Add this link in the <head> section of your HTML to include Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <section id="contact">
         <h2>Contact Me</h2>
-        <p>
-            Venu Madhav Pentala is a dedicated health informatics professional with a strong foundation in physiotherapy. He is passionate about leveraging clinical expertise and data-driven solutions to tackle complex challenges in the healthcare industry. Venu is always open to collaborations, professional inquiries, and networking opportunities.
-        </p>
+        <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
         <div class="social-icons">
-            <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank">LinkedIn</a>
-            <a href="mailto:vpentala@iu.edu">Email</a>
+            <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:vpentala@iu.edu" aria-label="Email">
+                <i class="fas fa-envelope"></i>
+            </a>
         </div>
     </section>
+    
 
     <footer>
         <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
