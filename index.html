@@ -5,197 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venu Madhav Pentala - Portfolio</title>
     <style>
-        header {
-            position: relative;
-            background: #34495e;
-            padding: 20px;
-            text-align: center;
-        }
-
-        header .profile-pic {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 80px; /* Adjust the size */
-            height: 80px;
-            border-radius: 50%; /* Makes it circular */
-            border: 2px solid #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            object-fit: cover;
-        }
-
+        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom right, #303085,#107d67, #1a1a1a);
+            background-color: #1a1a1a;
             color: #fff;
-            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-
+        /* Hero Section */
         header {
-            background: #34495e;
-            padding: 20px;
+            position: relative;
+            height: 100vh;
+            background: url('your-image-path.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Overlay effect */
         }
 
+        header h1 {
+            z-index: 1;
+            font-size: 3.5em;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        header p {
+            z-index: 1;
+            font-size: 1.5em;
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+            color: #dcdcdc;
+        }
+
+        /* Navigation */
         nav {
+            position: absolute;
+            top: 20px;
+            width: 100%;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 2;
         }
 
         nav a {
             color: #fff;
             text-decoration: none;
             font-size: 1.2em;
-            border-bottom: 2px solid transparent;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            border-bottom: 2px solid #1abc9c;
-        }
-
-        section {
-            padding: 40px;
-            text-align: center;
-        }
-
-        section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        section p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .project {
             background: #1abc9c;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: transform 0.2s;
+            border-radius: 5px;
         }
 
-        .project:hover {
-            transform: translateY(-5px);
+        /* About Section */
+        #about {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, #1a1a1a, #2c3e50);
         }
 
-        .project h3 {
-            margin: 0;
-            font-size: 1.5em;
+        #about h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1abc9c;
         }
 
-        .project p {
-            margin-top: 10px;
+        #about p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
+        /* Footer */
         footer {
             background: #34495e;
             text-align: center;
-            padding: 10px;
+            padding: 20px 0;
         }
 
         footer p {
             margin: 0;
+            color: #fff;
+            font-size: 0.9em;
         }
 
+        /* Social Icons */
         .social-icons {
             margin-top: 10px;
         }
 
         .social-icons a {
             margin: 0 10px;
-            color: #fff;
+            color: #1abc9c;
             text-decoration: none;
             font-size: 1.5em;
-        }
-        .name-highlight {
-            font-size: 2.5em;
-            font-weight: bold;
-            background: linear-gradient(to right, #4a148c, #8e44ad, #e91e63, #000);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
+            transition: color 0.3s ease;
         }
 
+        .social-icons a:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+    <!-- Hero Section -->
     <header>
-        <h1 class="name-highlight">Venu Madhav Pentala</h1>
         <nav>
             <a href="#about">About Me</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
-        <img src="images\profilepics.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+        <div>
+            <h1>Venu Madhav Pentala</h1>
+            <p>Welcome to my professional portfolio. Join me as I share my journey, projects, and aspirations in health informatics.</p>
+        </div>
     </header>
-    
+
+    <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
-        <p>I am Venu Madhav Pentala, a former physiotherapist currently pursuing a Master's in Health Informatics. My expertise bridges clinical practice and data-driven solutions, enabling me to address complex challenges in healthcare. With a strong foundation in clinical research, health technology, and data analysis, I am passionate about leveraging informatics to improve patient outcomes and healthcare efficiency. Welcome to my portfolio, where I share my academic journey, impactful projects, and aspirations in health informatics</p>
+        <p>I am Venu Madhav Pentala, a former physiotherapist currently pursuing a Master's in Health Informatics. My expertise bridges clinical practice and data-driven solutions, enabling me to address complex challenges in healthcare. With a strong foundation in clinical research, health technology, and data analysis, I am passionate about leveraging informatics to improve patient outcomes and healthcare efficiency.</p>
     </section>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects">
-            <div class="project">
-                <a href="Autply.html" style="text-decoration: none; color: inherit;">
-                    <h3>Autply</h3>
-                    <p>An AI-driven application for adaptive message replies.</p>
-                </a>
-            </div>
-            <div class="project">
-                <a href="etl-workflow.html" style="text-decoration: none; color: inherit;">
-                    <h3>ETL Workflow</h3>
-                    <p>Developed a robust ETL pipeline for efficient data management.</p>
-                </a>
-            </div>
-            <div class="project">
-                <a href="thyroid-prediction.html" style="text-decoration: none; color: inherit;">
-                    <h3>Thyroid Prediction Model</h3>
-                    <p>Leveraged Kaggle datasets to predict hypothyroidism using machine learning.</p>
-                </a>
-            </div>
-        </div>
-    </section>
-    
-
-<!-- Add this link in the <head> section of your HTML to include Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-<section id="contact">
-    <h2>Contact Me</h2>
-    <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
-    <div class="social-icons">
-        <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="mailto:vpentala@iu.edu" aria-label="Email">
-            <i class="fas fa-envelope"></i>
-        </a>
-    </div>
-</section>
-
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
     </footer>
