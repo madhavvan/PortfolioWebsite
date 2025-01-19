@@ -6,110 +6,136 @@
     <title>Thyroid Prediction Analysis</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            background-color: #f4f6f9;
-            color: #2c3e50;
-        }
-        h1 {
-            color: #34495e;
-            text-align: center;
-        }
-        h2 {
-            color: #2980b9;
-            margin-top: 30px;
-        }
-        p {
-            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #6dd5ed, #2193b0);
+            color: #ffffff;
         }
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #34495e;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 1.8em;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-left: 6px solid #2980b9;
+            padding-left: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+        ul {
+            margin: 20px 0;
+            padding-left: 20px;
+            font-size: 1.2em;
+        }
+        ul li {
+            margin-bottom: 10px;
         }
         .visuals {
             text-align: center;
-            margin: 20px 0;
+            margin: 30px 0;
         }
         .visuals img {
             max-width: 100%;
             height: auto;
-            border: 2px solid #2980b9;
+            border: 4px solid #2980b9;
             border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
         }
         .button {
             display: inline-block;
-            padding: 10px 20px;
-            margin: 20px 0;
-            background: #2980b9;
+            padding: 15px 30px;
+            margin: 30px 0;
+            background: linear-gradient(to right, #f12711, #f5af19);
             color: #ffffff;
+            font-size: 1.2em;
             text-decoration: none;
-            border-radius: 5px;
-            text-align: center;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
         .button:hover {
-            background: #1a5276;
+            background: linear-gradient(to right, #f5af19, #f12711);
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffffff;
+            border-top: 2px solid #f12711;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Thyroid Prediction Using Advanced Statistical Methods</h1>
-        <h2>Introduction</h2>
+        <h1>🚀 Thyroid Prediction Using Advanced Techniques</h1>
+        <h2>🔍 Introduction</h2>
         <p>
-            Hypothyroidism is a prevalent endocrine disorder with significant health impacts. This project aims 
-            to identify key demographic and clinical indicators associated with hypothyroidism and evaluate their 
-            predictive value using statistical and machine learning techniques. The dataset, sourced from Kaggle, 
-            provides comprehensive patient medical histories and clinical measurements to enable a robust analysis.
+            Hypothyroidism is a prevalent endocrine disorder with significant health impacts. This project is 
+            a transformative effort to harness statistical and machine learning methods to identify the key 
+            demographic and clinical indicators for predicting hypothyroidism.
         </p>
-
-        <h2>Exploratory Data Analysis</h2>
+        
+        <h2>📊 Exploratory Data Analysis</h2>
         <p>
-            Detailed visualizations, such as histograms and scatterplots, were used to inspect data distributions 
-            and identify outliers. Box plots revealed outliers in key variables like TSH and TT4, which were 
-            addressed using the Interquartile Range (IQR) method. Normality tests confirmed that data did not 
-            follow a normal distribution, informing the choice of statistical methods.
+            The dataset was rigorously analyzed using statistical techniques. Visualizations like box plots, 
+            histograms, and scatterplots highlighted significant trends, outliers, and distributions. The IQR 
+            method was used to address outliers in TSH and TT4 levels.
         </p>
         <div class="visuals">
             <img src="boxplot_outliers.jpg" alt="Box Plot for Outlier Detection">
-            <p>Figure 1: Boxplot showing outliers in TSH levels.</p>
+            <p><em>Figure 1: Outliers in TSH levels identified using a box plot.</em></p>
         </div>
 
-        <h2>Statistical and Machine Learning Methods</h2>
+        <h2>🧠 Statistical and Machine Learning Methods</h2>
         <p>
-            Both logistic regression and random forest models were implemented to evaluate predictive factors 
-            for hypothyroidism. Logistic regression provided interpretable coefficients for predictors like TSH, 
-            TT4, and FTI. Random forest outperformed logistic regression in accuracy, achieving 96.02% compared 
-            to 92.57%. Correlation analysis and chi-square tests identified strong associations between key 
-            variables and hypothyroidism.
+            Logistic regression and random forest models were employed to uncover predictors of hypothyroidism. 
+            Logistic regression provided interpretable coefficients, while random forest excelled in predictive 
+            accuracy, achieving a remarkable 96.02%.
         </p>
         <div class="visuals">
             <img src="correlation_heatmap.jpg" alt="Correlation Heatmap">
-            <p>Figure 2: Correlation heatmap highlighting significant relationships between variables.</p>
+            <p><em>Figure 2: Correlation heatmap showcasing relationships among predictors.</em></p>
         </div>
 
-        <h2>Key Results</h2>
+        <h2>🏆 Key Results</h2>
         <ul>
-            <li>Significant predictors: TSH, TT4, FTI, and T3 levels.</li>
-            <li>Logistic regression accuracy: 92.57%.</li>
-            <li>Random forest accuracy: 96.02%.</li>
-            <li>TSH emerged as the most influential variable for hypothyroidism prediction.</li>
+            <li><strong>Significant predictors:</strong> TSH, TT4, FTI, and T3 levels.</li>
+            <li><strong>Logistic regression accuracy:</strong> 92.57%.</li>
+            <li><strong>Random forest accuracy:</strong> 96.02%.</li>
+            <li><strong>TSH:</strong> The most influential predictor of hypothyroidism.</li>
         </ul>
 
-        <h2>Conclusion</h2>
+        <h2>✨ Conclusion</h2>
         <p>
-            This project highlights the effectiveness of statistical and machine learning models in predicting 
-            thyroid disorders. By integrating these methods into clinical practice, healthcare providers can 
-            ensure early detection and improve treatment outcomes. For more details, access the full dataset 
-            and code repository using the link below.
+            This project demonstrates the transformative potential of predictive analytics in healthcare. 
+            By integrating these insights into clinical workflows, healthcare providers can enhance early 
+            detection and treatment strategies, improving patient outcomes.
         </p>
         <div class="visuals">
-            <a href="https://www.kaggle.com/" class="button">Explore Dataset</a>
+            <a href="https://www.kaggle.com/" class="button">Access Dataset & Insights</a>
         </div>
     </div>
+    <footer>
+        Designed by Venu Madhav Pentala | Powered by Passion for Innovation
+    </footer>
 </body>
 </html>
