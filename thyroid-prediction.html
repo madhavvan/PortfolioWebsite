@@ -3,32 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thyroid Prediction Using Clinical Features</title>
+    <title>Thyroid Prediction Analysis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 20px;
-        }
-        h1, h2 {
+            background-color: #f4f6f9;
             color: #2c3e50;
         }
-        p {
+        h1 {
             color: #34495e;
+            text-align: center;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 30px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .visuals {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .visuals img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #2980b9;
+            border-radius: 8px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 20px 0;
+            background: #2980b9;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .button:hover {
+            background: #1a5276;
         }
     </style>
 </head>
 <body>
-    <h1>Thyroid Prediction Using Clinical and Biochemical Features</h1>
-    <h2>Advancing Diagnostic Precision Through Predictive Models</h2>
-    <p>
-        Thyroid disorders, including hypothyroidism and hyperthyroidism, can significantly impact health 
-        if undiagnosed. Using machine learning models trained on clinical and biochemical features, we can 
-        predict thyroid conditions with remarkable accuracy. Key predictive variables include TSH, T3, T4 levels, 
-        and patient demographics. Implementing these models in clinical practice enables early detection, 
-        personalized treatment, and reduced healthcare costs. By integrating these tools within EHR systems, 
-        healthcare providers can seamlessly access predictive insights, empowering timely interventions and 
-        improved patient outcomes.
-    </p>
+    <div class="container">
+        <h1>Thyroid Prediction Using Advanced Statistical Methods</h1>
+        <h2>Introduction</h2>
+        <p>
+            Hypothyroidism is a prevalent endocrine disorder with significant health impacts. This project aims 
+            to identify key demographic and clinical indicators associated with hypothyroidism and evaluate their 
+            predictive value using statistical and machine learning techniques. The dataset, sourced from Kaggle, 
+            provides comprehensive patient medical histories and clinical measurements to enable a robust analysis.
+        </p>
+
+        <h2>Exploratory Data Analysis</h2>
+        <p>
+            Detailed visualizations, such as histograms and scatterplots, were used to inspect data distributions 
+            and identify outliers. Box plots revealed outliers in key variables like TSH and TT4, which were 
+            addressed using the Interquartile Range (IQR) method. Normality tests confirmed that data did not 
+            follow a normal distribution, informing the choice of statistical methods.
+        </p>
+        <div class="visuals">
+            <img src="boxplot_outliers.jpg" alt="Box Plot for Outlier Detection">
+            <p>Figure 1: Boxplot showing outliers in TSH levels.</p>
+        </div>
+
+        <h2>Statistical and Machine Learning Methods</h2>
+        <p>
+            Both logistic regression and random forest models were implemented to evaluate predictive factors 
+            for hypothyroidism. Logistic regression provided interpretable coefficients for predictors like TSH, 
+            TT4, and FTI. Random forest outperformed logistic regression in accuracy, achieving 96.02% compared 
+            to 92.57%. Correlation analysis and chi-square tests identified strong associations between key 
+            variables and hypothyroidism.
+        </p>
+        <div class="visuals">
+            <img src="correlation_heatmap.jpg" alt="Correlation Heatmap">
+            <p>Figure 2: Correlation heatmap highlighting significant relationships between variables.</p>
+        </div>
+
+        <h2>Key Results</h2>
+        <ul>
+            <li>Significant predictors: TSH, TT4, FTI, and T3 levels.</li>
+            <li>Logistic regression accuracy: 92.57%.</li>
+            <li>Random forest accuracy: 96.02%.</li>
+            <li>TSH emerged as the most influential variable for hypothyroidism prediction.</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>
+            This project highlights the effectiveness of statistical and machine learning models in predicting 
+            thyroid disorders. By integrating these methods into clinical practice, healthcare providers can 
+            ensure early detection and improve treatment outcomes. For more details, access the full dataset 
+            and code repository using the link below.
+        </p>
+        <div class="visuals">
+            <a href="https://www.kaggle.com/" class="button">Explore Dataset</a>
+        </div>
+    </div>
 </body>
 </html>
