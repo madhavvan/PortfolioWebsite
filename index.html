@@ -243,100 +243,79 @@
 
 
     <script>
-        // Check if the admin is logged in
-        const isAdmin = sessionStorage.getItem('isAdmin');
-        if (isAdmin === 'true') {
-          document.getElementById('uploadSection').style.display = 'block'; // Show the upload section
-        }
-      
-        async function uploadFile() {
-          const fileInput = document.getElementById('fileInput');
-          const file = fileInput.files[0];
-          if (!file) {
-            alert("Please select a file.");
-            return;
-          }
-      
-          const formData = new FormData();
-          formData.append('file', file);
-      
-          try {
-            const response = await fetch('https://your-backend.onrender.com/upload', {
-              method: 'POST',
-              body: formData,
+        const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
+
+        if (isAdmin) {
+            // Show admin-only elements
+            document.getElementById('uploadSection').style.display = 'block';
+            document.getElementById('editIcon').style.display = 'block';
+
+            // Handle pencil icon click
+            document.getElementById('editIcon').addEventListener('click', () => {
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
+                fileInput.onchange = async (event) => {
+                    const file = event.target.files[0];
+                    if (!file) {
+                        alert("Please select a file.");
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    try {
+                        const response = await fetch('http://127.0.0.1:5000/upload', {
+                            method: 'POST',
+                            body: formData,
+                        });
+
+                        const result = await response.json();
+                        if (result.success) {
+                            document.getElementById('profilePicture').src = result.imageUrl;
+                            alert("Picture updated successfully!");
+                        } else {
+                            alert("Upload failed: " + result.message);
+                        }
+                    } catch (error) {
+                        console.error("Error uploading file:", error);
+                        alert("An error occurred. Please try again.");
+                    }
+                };
+                fileInput.click();
             });
-      
-            const result = await response.json();
-            if (result.success) {
-              document.getElementById('uploadMessage').style.display = 'block';
-              // Update the displayed profile picture
-              document.getElementById('profilePicture').src = result.imageUrl;
-            } else {
-              alert('Upload failed: ' + result.message);
+        }
+
+        async function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert("Please select a file.");
+                return;
             }
-          } catch (error) {
-            console.error('Error uploading file:', error);
-            alert('An error occurred. Please try again.');
-          }
-        }
-      </script>
-      <script>
-        // Show the pencil icon only for the admin
-        const isAdmin = sessionStorage.getItem('isAdmin');
-        if (isAdmin === 'true') {
-          document.getElementById('editIcon').style.display = 'block'; // Show the pencil icon
-        }
-      
-        // Handle pencil icon click
-        document.getElementById('editIcon').addEventListener('click', () => {
-          const action = prompt("Choose an action: \n1. Change Picture\n2. Remove Picture");
-      
-          if (action === "1") {
-            // Trigger file upload
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*';
-            fileInput.onchange = async (event) => {
-              const file = event.target.files[0];
-              if (file) {
-                const formData = new FormData();
-                formData.append('file', file);
-      
-                try {
-                  const response = await fetch('https://http://127.0.0.1:5000/upload', {
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/upload', {
                     method: 'POST',
                     body: formData,
-                  });
-      
-                  const result = await response.json();
-                  if (result.success) {
-                    document.getElementById('profilePicture').src = result.imageUrl; // Update profile picture
-                    alert("Picture updated successfully!");
-                  } else {
-                    alert('Upload failed: ' + result.message);
-                  }
-                } catch (error) {
-                  console.error('Error uploading file:', error);
-                  alert('An error occurred. Please try again.');
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    document.getElementById('uploadMessage').style.display = 'block';
+                    document.getElementById('profilePicture').src = result.imageUrl;
+                } else {
+                    alert("Upload failed: " + result.message);
                 }
-              }
-            };
-            fileInput.click();
-          } else if (action === "2") {
-            // Remove picture
-            const confirmDelete = confirm("Are you sure you want to remove the picture?");
-            if (confirmDelete) {
-              document.getElementById('profilePicture').src = 'images/default-profile-pic.jpg'; // Set to default
-              alert("Picture removed!");
+            } catch (error) {
+                console.error("Error uploading file:", error);
+                alert("An error occurred. Please try again.");
             }
-          } else {
-            alert("Invalid action!");
-          }
-        });
-      </script>
-      
-      
+        }
+    </script>
 </body>
 </html>
-
-
