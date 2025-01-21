@@ -36,20 +36,23 @@
   </form>
   <p id="error" style="color: red; display: none;">Invalid username or password!</p>
   <script>
-    function authenticate() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+function authenticate() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
 
-      // Replace these with your admin credentials
-      const adminUsername = "admin";
-      const adminPassword = "mypassword";
+  // Replace these with your admin credentials
+  const adminUsername = "admin";
+  const adminPassword = "mypassword";
 
-      if (username === adminUsername && password === adminPassword) {
-        window.location.href = "index.html"; // Redirect to admin-only page
-      } else {
-        document.getElementById("error").style.display = "block";
-      }
-    }
+  if (username === adminUsername && password === adminPassword) {
+    sessionStorage.setItem('isAdmin', 'true'); // Mark the admin as logged in
+    window.location.href = "index.html"; // Redirect to the main site
+  } else {
+    document.getElementById("error").style.display = "block";
+  }
+}
+
+
   </script>
 </body>
 </html>
