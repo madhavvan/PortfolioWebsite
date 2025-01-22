@@ -187,6 +187,31 @@
                 opacity: 1;
             }
         }
+        nav a {
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2em;
+        margin: 0 15px;
+        padding: 5px 0;
+        transition: color 0.3s ease;
+        }
+
+        nav a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #32CD32; /* Green color */
+        transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+        width: 100%; /* Full underline on hover or active */
+        }
     </style>
 </head>
 <body>
