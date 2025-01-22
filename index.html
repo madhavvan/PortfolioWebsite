@@ -159,22 +159,22 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
-        <div style="position: relative; display: inline-block;"></div>
-          <img id="profilePicture" src="images\profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
-          <i id="editIcon" class="fas fa-pencil-alt" style="
-              position: absolute;
-              top: 10px;
-              right: 10px;
-              font-size: 20px;
-              color: white;
-              cursor: pointer;
-              background-color: rgba(0, 0, 0, 0.5);
-              border-radius: 50%;
-              padding: 5px;
-              display: none;"></i>
+        <div style="position: relative; display: inline-block;">
+            <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+            <i id="editIcon" class="fas fa-pencil-alt" style="
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 20px;
+                color: white;
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.5);
+                border-radius: 50%;
+                padding: 5px;
+                display: none;"></i>
         </div>
-
     </header>
+    
 
     <div id="uploadSection" style="display: none;">
         <h2>Upload Profile Picture</h2>
@@ -243,38 +243,41 @@
 
 
     <script>
+        // Check if the user is an admin
         const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
-
+    
         if (isAdmin) {
             // Show admin-only elements
-            document.getElementById('uploadSection').style.display = 'block';
             document.getElementById('editIcon').style.display = 'block';
-
+    
             // Handle pencil icon click
             document.getElementById('editIcon').addEventListener('click', () => {
                 const fileInput = document.createElement('input');
                 fileInput.type = 'file';
                 fileInput.accept = 'image/*';
+    
                 fileInput.onchange = async (event) => {
                     const file = event.target.files[0];
                     if (!file) {
                         alert("Please select a file.");
                         return;
                     }
-
+    
                     const formData = new FormData();
                     formData.append('file', file);
-
+    
                     try {
                         const response = await fetch('http://127.0.0.1:5000/upload', {
                             method: 'POST',
                             body: formData,
                         });
-
+    
                         const result = await response.json();
                         if (result.success) {
-                            document.getElementById('profilePicture').src = result.imageUrl;
-                            alert("Picture updated successfully!");
+                            // Update the profile picture on the website
+                            const profilePicture = document.getElementById('profilePicture');
+                            profilePicture.src = result.imageUrl; // Use the returned imageUrl
+                            alert("Profile picture updated successfully!");
                         } else {
                             alert("Upload failed: " + result.message);
                         }
@@ -283,39 +286,11 @@
                         alert("An error occurred. Please try again.");
                     }
                 };
+    
                 fileInput.click();
             });
         }
-
-        async function uploadFile() {
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
-            if (!file) {
-                alert("Please select a file.");
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append('file', file);
-
-            try {
-                const response = await fetch('http://127.0.0.1:5000/upload', {
-                    method: 'POST',
-                    body: formData,
-                });
-
-                const result = await response.json();
-                if (result.success) {
-                    document.getElementById('uploadMessage').style.display = 'block';
-                    document.getElementById('profilePicture').src = result.imageUrl;
-                } else {
-                    alert("Upload failed: " + result.message);
-                }
-            } catch (error) {
-                console.error("Error uploading file:", error);
-                alert("An error occurred. Please try again.");
-            }
-        }
     </script>
+    
 </body>
 </html>
