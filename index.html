@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,22 +6,37 @@
     <title>Venu Madhav Pentala - Portfolio</title>
     <style>
         header {
-            position: relative;
+            position: relative; /* Relative positioning for the profile picture container */
             background: #34495e;
             padding: 20px;
             text-align: center;
         }
 
-        header .profile-pic {
-            position: absolute;
-            top: 10px;
+        .profile-pic-container {
+            position: absolute; /* Absolute positioning for profile picture container */
+            top: 10px; /* Adjust for top-right corner */
             right: 10px;
-            width: 60px; /* Adjust the size */
-            height: 60px;
-            border-radius: 50%; /* Makes it circular */
+        }
 
+        header .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%; /* Circular profile picture */
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             object-fit: cover;
+        }
+
+        header .edit-icon {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            padding: 5px;
+            display: none; /* Only show for admin */
         }
 
         body {
@@ -30,16 +45,9 @@
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom right, #303085,#107d67, #1a1a1a);
+            background: linear-gradient(to bottom right, #303085, #107d67, #1a1a1a);
             color: #fff;
             min-height: 100vh;
-        }
-
-
-        header {
-            background: #34495e;
-            padding: 20px;
-            text-align: center;
         }
 
         header h1 {
@@ -70,16 +78,6 @@
             text-align: center;
         }
 
-        section h2 {
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        section p {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
-
         .projects {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -97,15 +95,6 @@
 
         .project:hover {
             transform: translateY(-5px);
-        }
-
-        .project h3 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-
-        .project p {
-            margin-top: 10px;
         }
 
         footer {
@@ -128,6 +117,7 @@
             text-decoration: none;
             font-size: 1.5em;
         }
+
         .name-highlight {
             font-size: 2.5em;
             font-weight: bold;
@@ -138,17 +128,6 @@
             margin: 0;
             padding: 20px;
         }
-        .social-icons a {
-            font-size: 24px;
-            margin: 0 10px;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .social-icons a:hover {
-            color: #0077b5; /* LinkedIn blue */
-        }
-
     </style>
 </head>
 <body>
@@ -159,35 +138,24 @@
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
-        <div style="position: relative; display: inline-block;">
+        <div class="profile-pic-container">
             <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
-            <i id="editIcon" class="fas fa-pencil-alt" style="
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                font-size: 20px;
-                color: white;
-                cursor: pointer;
-                background-color: rgba(0, 0, 0, 0.5);
-                border-radius: 50%;
-                padding: 5px;
-                display: none;"></i>
+            <i id="editIcon" class="fas fa-pencil-alt edit-icon"></i>
         </div>
     </header>
-    
 
     <div id="uploadSection" style="display: none;">
         <h2>Upload Profile Picture</h2>
         <form id="uploadForm" enctype="multipart/form-data">
-          <input type="file" id="fileInput" name="file" accept="image/*" required />
-          <button type="button" onclick="uploadFile()">Upload</button>
+            <input type="file" id="fileInput" name="file" accept="image/*" required />
+            <button type="button" onclick="uploadFile()">Upload</button>
         </form>
         <p id="uploadMessage" style="color: green; display: none;">Upload successful!</p>
-      </div>
-      
+    </div>
+
     <section id="about">
         <h2>About Me</h2>
-        <p>I am Venu Madhav Pentala, a former physiotherapist currently pursuing a Master's in Health Informatics. My expertise bridges clinical practice and data-driven solutions, enabling me to address complex challenges in healthcare. With a strong foundation in clinical research, health technology, and data analysis, I am passionate about leveraging informatics to improve patient outcomes and healthcare efficiency. Welcome to my portfolio, where I share my academic journey, impactful projects, and aspirations in health informatics</p>
+        <p>I am Venu Madhav Pentala, a former physiotherapist currently pursuing a Master's in Health Informatics...</p>
     </section>
 
     <section id="projects">
@@ -205,21 +173,8 @@
                     <p>Developed a robust ETL pipeline for efficient data management.</p>
                 </a>
             </div>
-            <div class="project">
-                <a href="thyroid-prediction.html" style="text-decoration: none; color: inherit;">
-                    <h3>Thyroid Prediction Model</h3>
-                    <p>Leveraged Kaggle datasets to predict hypothyroidism using machine learning.</p>
-                </a>
-            </div>
-            <div class="project">
-                <a href="EHR-Systems.html" style="text-decoration: none; color: inherit;">
-                    <h3>The Design, Implementation, and Evaluation of EHR's</h3>
-                    <p>Posted soon</p>
-                </a>
-            </div>
         </div>
     </section>
-    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -235,77 +190,68 @@
             </a>
         </div>
     </section>
-    
 
     <footer>
         <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
     </footer>
 
-
- <script>
-    // Fetch the current profile picture URL on page load
-    async function loadProfilePicture() {
-        try {
-            const response = await fetch('http://127.0.0.1:5000/profile-picture');
-            const data = await response.json();
-            const profilePicture = document.getElementById('profilePicture');
-            profilePicture.src = data.profilePicture;
-        } catch (error) {
-            console.error("Error loading profile picture:", error);
+    <script>
+        async function loadProfilePicture() {
+            try {
+                const response = await fetch('http://127.0.0.1:5000/profile-picture');
+                const data = await response.json();
+                const profilePicture = document.getElementById('profilePicture');
+                profilePicture.src = data.profilePicture;
+            } catch (error) {
+                console.error("Error loading profile picture:", error);
+            }
         }
-    }
 
-    // Load the profile picture when the page loads
-    window.onload = loadProfilePicture;
+        window.onload = loadProfilePicture;
 
-    // Admin functionality to upload a new profile picture
-    const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
+        const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
 
-    if (isAdmin) {
-        // Show admin-only elements
-        document.getElementById('editIcon').style.display = 'block';
+        if (isAdmin) {
+            document.getElementById('editIcon').style.display = 'block';
 
-        // Handle pencil icon click
-        document.getElementById('editIcon').addEventListener('click', () => {
-            const fileInput = document.createElement('input');
-            fileInput.type = 'file';
-            fileInput.accept = 'image/*';
+            document.getElementById('editIcon').addEventListener('click', () => {
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
 
-            fileInput.onchange = async (event) => {
-                const file = event.target.files[0];
-                if (!file) {
-                    alert("Please select a file.");
-                    return;
-                }
-
-                const formData = new FormData();
-                formData.append('file', file);
-
-                try {
-                    const response = await fetch('http://127.0.0.1:5000/upload', {
-                        method: 'POST',
-                        body: formData,
-                    });
-
-                    const result = await response.json();
-                    if (result.success) {
-                        const profilePicture = document.getElementById('profilePicture');
-                        profilePicture.src = result.imageUrl; // Update the profile picture dynamically
-                        alert("Profile picture updated successfully!");
-                    } else {
-                        alert("Upload failed: " + result.message);
+                fileInput.onchange = async (event) => {
+                    const file = event.target.files[0];
+                    if (!file) {
+                        alert("Please select a file.");
+                        return;
                     }
-                } catch (error) {
-                    console.error("Error uploading file:", error);
-                    alert("An error occurred. Please try again.");
-                }
-            };
 
-            fileInput.click();
-        });
-    }
-</script>
+                    const formData = new FormData();
+                    formData.append('file', file);
 
-    
+                    try {
+                        const response = await fetch('http://127.0.0.1:5000/upload', {
+                            method: 'POST',
+                            body: formData,
+                        });
+
+                        const result = await response.json();
+                        if (result.success) {
+                            const profilePicture = document.getElementById('profilePicture');
+                            profilePicture.src = result.imageUrl;
+                            alert("Profile picture updated successfully!");
+                        } else {
+                            alert("Upload failed: " + result.message);
+                        }
+                    } catch (error) {
+                        console.error("Error uploading file:", error);
+                        alert("An error occurred. Please try again.");
+                    }
+                };
+
+                fileInput.click();
+            });
+        }
+    </script>
 </body>
 </html>
