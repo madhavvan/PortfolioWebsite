@@ -242,55 +242,70 @@
     </footer>
 
 
-    <script>
-        // Check if the user is an admin
-        const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
-    
-        if (isAdmin) {
-            // Show admin-only elements
-            document.getElementById('editIcon').style.display = 'block';
-    
-            // Handle pencil icon click
-            document.getElementById('editIcon').addEventListener('click', () => {
-                const fileInput = document.createElement('input');
-                fileInput.type = 'file';
-                fileInput.accept = 'image/*';
-    
-                fileInput.onchange = async (event) => {
-                    const file = event.target.files[0];
-                    if (!file) {
-                        alert("Please select a file.");
-                        return;
-                    }
-    
-                    const formData = new FormData();
-                    formData.append('file', file);
-    
-                    try {
-                        const response = await fetch('http://127.0.0.1:5000/upload', {
-                            method: 'POST',
-                            body: formData,
-                        });
-    
-                        const result = await response.json();
-                        if (result.success) {
-                            // Update the profile picture on the website
-                            const profilePicture = document.getElementById('profilePicture');
-                            profilePicture.src = result.imageUrl; // Use the returned imageUrl
-                            alert("Profile picture updated successfully!");
-                        } else {
-                            alert("Upload failed: " + result.message);
-                        }
-                    } catch (error) {
-                        console.error("Error uploading file:", error);
-                        alert("An error occurred. Please try again.");
-                    }
-                };
-    
-                fileInput.click();
-            });
+ <script>
+    // Fetch the current profile picture URL on page load
+    async function loadProfilePicture() {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/profile-picture');
+            const data = await response.json();
+            const profilePicture = document.getElementById('profilePicture');
+            profilePicture.src = data.profilePicture;
+        } catch (error) {
+            console.error("Error loading profile picture:", error);
         }
-    </script>
+    }
+
+    // Load the profile picture when the page loads
+    window.onload = loadProfilePicture;
+
+    // Admin functionality to upload a new profile picture
+    const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
+
+    if (isAdmin) {
+        // Show admin-only elements
+        document.getElementById('editIcon').style.display = 'block';
+
+        // Handle pencil icon click
+        document.getElementById('editIcon').addEventListener('click', () => {
+            const fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = 'image/*';
+
+            fileInput.onchange = async (event) => {
+                const file = event.target.files[0];
+                if (!file) {
+                    alert("Please select a file.");
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('file', file);
+
+                try {
+                    const response = await fetch('http://127.0.0.1:5000/upload', {
+                        method: 'POST',
+                        body: formData,
+                    });
+
+                    const result = await response.json();
+                    if (result.success) {
+                        const profilePicture = document.getElementById('profilePicture');
+                        profilePicture.src = result.imageUrl; // Update the profile picture dynamically
+                        alert("Profile picture updated successfully!");
+                    } else {
+                        alert("Upload failed: " + result.message);
+                    }
+                } catch (error) {
+                    console.error("Error uploading file:", error);
+                    alert("An error occurred. Please try again.");
+                }
+            };
+
+            fileInput.click();
+        });
+    }
+</script>
+
     
 </body>
 </html>
