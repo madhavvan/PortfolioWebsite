@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         /* General Styles */
         body {
@@ -16,30 +18,54 @@
             background: linear-gradient(to bottom right, #1a1a2e, #16213e, #0f3460);
             color: #fff;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        header {
+            position: relative;
+            background: #34495e;
             padding: 20px;
             text-align: center;
         }
 
-        h1, h2 {
-            margin: 20px 0;
+        .profile-pic-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
         }
 
-        p {
-            line-height: 1.6;
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
         }
 
-        /* Hero Section */
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-bottom: 2px solid transparent;
+        }
+
         .hero {
             background: linear-gradient(to right, #6a11cb, #2575fc);
             color: white;
             text-align: center;
             padding: 100px 20px;
-            animation: fadeIn 2s ease;
         }
 
         .hero-title {
@@ -52,7 +78,6 @@
             margin-top: 10px;
         }
 
-        /* Section Styles */
         section {
             padding: 60px 20px;
             position: relative;
@@ -102,7 +127,6 @@
             margin-right: 10px;
         }
 
-        /* Button Styles */
         button {
             padding: 10px 20px;
             background: #6a11cb;
@@ -119,16 +143,42 @@
             background: #2575fc;
         }
 
-        /* Footer */
-        .footer {
-            background: #1a1a2e;
-            color: white;
+        footer {
+            background: #34495e;
             text-align: center;
-            padding: 20px;
-            font-size: 1rem;
+            padding: 10px;
         }
 
-        /* Animations */
+        footer p {
+            margin: 0;
+        }
+
+        .social-icons {
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        .social-icons a:hover {
+            color: #0077b5;
+        }
+
+        .name-highlight {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -137,21 +187,21 @@
                 opacity: 1;
             }
         }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
-        }
     </style>
 </head>
 <body>
+    <header>
+        <h1 class="name-highlight">Venu Madhav Pentala</h1>
+        <nav>
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="profile-pic-container">
+            <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+        </div>
+    </header>
+
     <header class="hero">
         <div class="container">
             <h1 class="hero-title">Autply</h1>
@@ -162,14 +212,13 @@
     <section class="introduction">
         <div class="container">
             <h2>Introduction</h2>
-            <p>Autply is a cutting-edge mobile application designed to enhance your messaging experience by seamlessly integrating AI-driven solutions into daily communication. Built with the latest technology stack and designed for ease of use, Autply leverages the power of accessibility services and advanced AI to simplify how users interact with messaging apps like WhatsApp. With Autply, intelligent conversations are just a tap away.</p>
+            <p>Autply is a cutting-edge mobile application designed to enhance your messaging experience by seamlessly integrating AI-driven solutions into daily communication. Built with the latest technology stack and designed for ease of use, Autply leverages the power of accessibility services and advanced AI to simplify how users interact with messaging apps like WhatsApp.</p>
         </div>
     </section>
 
     <section class="features">
         <div class="container">
             <h2>Core Functionality</h2>
-            <p>At the heart of Autply is its ability to intelligently listen to incoming message notifications, process their content, and instantly generate relevant AI-driven response suggestions. Using state-of-the-art natural language processing, Autply ensures that every suggested reply aligns contextually with the received message, creating a truly dynamic communication assistant.</p>
             <ul>
                 <li>Notification Listener: Automatically detects and reads incoming messages from WhatsApp.</li>
                 <li>AI-Powered Reply Suggestions: Harnesses cutting-edge AI algorithms to generate meaningful replies tailored to the conversation.</li>
@@ -181,7 +230,6 @@
     <section class="user-experience">
         <div class="container">
             <h2>Streamlined User Experience</h2>
-            <p>Autply focuses on making messaging effortless:</p>
             <ul>
                 <li>Automated Message Handling: Reads and processes message notifications without user intervention.</li>
                 <li>Quick Action Pop-Ups: Provides users with a non-intrusive yet efficient interface to view AI-suggested responses.</li>
@@ -193,7 +241,6 @@
     <section class="innovation">
         <div class="container">
             <h2>Innovation in Action</h2>
-            <p>What sets Autply apart is its deep integration with Android’s Accessibility Services. By seamlessly working with WhatsApp’s interface, Autply:</p>
             <ul>
                 <li>Identifies key interface components like the reply box and send button.</li>
                 <li>Automates repetitive tasks to enhance productivity.</li>
@@ -205,7 +252,6 @@
     <section class="technical">
         <div class="container">
             <h2>Technical Excellence</h2>
-            <p>Autply is built on a robust technical foundation to ensure high performance and reliability:</p>
             <ul>
                 <li>Kotlin-Powered Development: Optimized for Android with clean, efficient, and maintainable code.</li>
                 <li>AI Integration: Utilizes industry-leading AI tools like ChatGPT for response generation.</li>
@@ -221,13 +267,36 @@
         </div>
     </section>
 
-    <footer class="footer">
+    <section id="contact">
         <div class="container">
-            <p>With Autply, you’re not just using a messaging tool; you’re embracing a smarter way to connect. The app is designed for users who value innovation, productivity, and meaningful conversations. Welcome to the future of messaging—welcome to Autply.</p>
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:vpentala@iu.edu" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X">
+                    <i class="fab fa-x"></i>
+                </a>
+                <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
             <p>Explore the source code on <a href="https://github.com/madhavvan/dot" target="_blank" style="color: #6a11cb; text-decoration: none; font-weight: bold;">GitHub</a>.</p>
         </div>
     </footer>
-    
 
     <script>
         const sections = document.querySelectorAll('section');
