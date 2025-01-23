@@ -40,6 +40,38 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+        header {
+            position: relative;
+            background: #34495e;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-pic-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
         h2, h3 {
             color: #fbffff;
         }
@@ -77,9 +109,56 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
+        .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+
+        .social-icons a:hover {
+            color: #0077b5;
+        }
+        nav a {
+        position: relative;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2em;
+        margin: 0 15px;
+        padding: 5px 0;
+        transition: color 0.3s ease;
+        }
+
+        nav a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #32CD32; /* Green color */
+        transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+        width: 100%; /* Full underline on hover or active */
+        }
     </style>
 </head>
 <body>
+
+    <h1 class="name-highlight">Venu Madhav Pentala</h1>
+    <nav>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="profile-pic-container">
+        <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+        <i id="editIcon" class="fas fa-pencil-alt edit-icon"></i>
+    </div>
+</header>
     <header>
         <h1 class="glow-effect">Healthcare Data Integration using ETL</h1>
     </header>
@@ -166,7 +245,28 @@
         <h2>Project Insights</h2>
         <p>This project demonstrates how ETL processes can streamline healthcare data integration, ensuring compliance with industry standards and enhancing interoperability between systems.</p>
     </section>
-
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:vpentala@iu.edu" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X">
+                    <i class="fab fa-x"></i>
+                </a>
+                <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
 
 
     <footer>
