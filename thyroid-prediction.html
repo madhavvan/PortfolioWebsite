@@ -29,7 +29,10 @@
         header h1 {
             margin: 0;
             font-size: 3rem;
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 198, 255, 0.7);
             animation: glow 1.5s infinite alternate;
         }
         .profile-pic-container {
@@ -118,8 +121,17 @@
             background: #224b77;
             color: #fff;
             margin-top: 20px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
+        }
+        footer a {
+            color: #00c6ff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        footer a:hover {
+            color: #32CD32;
         }
         .glow-effect {
             text-shadow: 0 0 8px rgba(0, 198, 255, 0.7), 0 0 16px rgba(0, 198, 255, 0.7);
