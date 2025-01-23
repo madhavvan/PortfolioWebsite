@@ -5,25 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Healthcare Data Integration using ETL</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: rgba(0, 217, 255, 0.098)#1a1a2e;
-            color: #333;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom right, #303085,#107d67, #1a1a1a);
+            background: linear-gradient(to bottom right, #303085, #107d67, #1a1a1a);
             color: #fff;
             min-height: 100vh;
         }
         header {
             background: linear-gradient(90deg, #4f83bb, #0f3039);
-            color: #1b1111;
+            color: #fff;
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -32,27 +25,11 @@
             margin: 0;
             font-size: 2.5rem;
         }
-        section {
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 900px;
-            background: #68819a;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        header {
-            position: relative;
-            background: #34495e;
-            padding: 20px;
-            text-align: center;
-        }
-
         .profile-pic-container {
             position: absolute;
             top: 10px;
             right: 10px;
         }
-
         .profile-pic {
             width: 60px;
             height: 60px;
@@ -60,17 +37,42 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             object-fit: cover;
         }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-
         nav {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 15px;
+        }
+        nav a {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 15px;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #32CD32; /* Green color */
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%; /* Full underline on hover or active */
+        }
+        section {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
+            background: #68819a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h2, h3 {
             color: #fbffff;
@@ -91,7 +93,7 @@
             text-align: center;
             padding: 10px;
             background: #224b77;
-            color: #1d129142;
+            color: #fff;
             margin-top: 20px;
             font-size: 0.9rem;
         }
@@ -115,34 +117,8 @@
             text-decoration: none;
             font-size: 1.5em;
         }
-
         .social-icons a:hover {
             color: #0077b5;
-        }
-        nav a {
-        position: relative;
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.2em;
-        margin: 0 15px;
-        padding: 5px 0;
-        transition: color 0.3s ease;
-        }
-
-        nav a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #32CD32; /* Green color */
-        transition: width 0.3s ease;
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-        width: 100%; /* Full underline on hover or active */
         }
     </style>
 </head>
@@ -250,23 +226,11 @@
             <h2>Contact Me</h2>
             <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:vpentala@iu.edu" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X">
-                    <i class="fab fa-x"></i>
-                </a>
-                <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
+                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank">LinkedIn</a>
+                <a href="mailto:vpentala@iu.edu">Email</a>
             </div>
         </div>
+    </section>
 
 
     <footer>
