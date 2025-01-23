@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Healthcare Data Integration using ETL</title>
     <style>
          body {
@@ -15,11 +16,10 @@
             min-height: 100vh;
         }
         header {
-            background: linear-gradient(90deg, #4f83bb, #0f3039);
-            color: #fff;
-            padding: 20px 0;
+            position: relative;
+            background: #34495e;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         header h1 {
             margin: 0;
@@ -106,6 +106,16 @@
         }
         .fade-in {
             animation: fadeIn 2s;
+        }
+        .name-highlight {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -221,13 +231,27 @@
         <h2>Project Insights</h2>
         <p>This project demonstrates how ETL processes can streamline healthcare data integration, ensuring compliance with industry standards and enhancing interoperability between systems.</p>
     </section>
+
     <section id="contact">
         <div class="container">
             <h2>Contact Me</h2>
             <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank">LinkedIn</a>
-                <a href="mailto:vpentala@iu.edu">Email</a>
+                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:vpentala@iu.edu" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X">
+                    <i class="fab fa-x"></i>
+                </a>
+                <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
         </div>
     </section>
