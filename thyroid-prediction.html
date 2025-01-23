@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <title>Thyroid Prediction Project</title>
+    <title>Healthcare Data Integration using ETL</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
@@ -16,92 +16,119 @@
             min-height: 100vh;
         }
         header {
-            text-align: center;
-            padding: 20px;
+            position: relative;
             background: #34495e;
-            color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            text-align: center;
         }
         header h1 {
+            margin: 0;
             font-size: 2.5rem;
-            text-shadow: 0 0 10px rgba(0, 198, 255, 0.7);
         }
-        .container {
-            max-width: 900px;
+        .profile-pic-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        nav a {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 15px;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #32CD32; /* Green color */
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%; /* Full underline on hover or active */
+        }
+        section {
             margin: 20px auto;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            max-width: 900px;
+            background: #68819a;
             border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        h2 {
-            font-size: 2rem;
-            color: #00c6ff;
-            margin-bottom: 10px;
-            text-shadow: 0 0 5px #00c6ff;
-        }
-        p, ul {
-            text-align: justify;
-            font-size: 1.1rem;
-            line-height: 1.8;
+        h2, h3 {
+            color: #fbffff;
         }
         ul {
             padding-left: 20px;
         }
-        ul li {
+        li {
             margin-bottom: 10px;
         }
-        .visuals {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .visuals img {
-            max-width: 180px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .visuals img:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #32cd32;
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .button:hover {
-            background: #28a428;
-            transform: translateY(-3px);
-        }
-        .highlight {
-            color: #ffd700;
-            font-weight: bold;
-            text-shadow: 0 0 5px #ffd700;
+        code {
+            background: #187a6513;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #c7254e;
         }
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 10px;
             background: #224b77;
             color: #fff;
+            margin-top: 20px;
             font-size: 0.9rem;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+        }
+        .glow-effect {
+            text-shadow: 0 0 8px rgba(0, 198, 255, 0.7), 0 0 16px rgba(0, 198, 255, 0.7);
+        }
+        .highlight {
+            color: #00c6ff;
+            font-weight: bold;
+        }
+        .fade-in {
+            animation: fadeIn 2s;
+        }
+        .name-highlight {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .fade-in {
-            animation: fadeIn 2s ease-in;
+        .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+        .social-icons a:hover {
+            color: #0077b5;
         }
     </style>
 </head>
