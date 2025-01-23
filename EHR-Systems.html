@@ -3,32 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design, Implementation, and Evaluation of EHR</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Healthcare Data Integration using ETL</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #303085, #107d67, #1a1a1a);
+            color: #fff;
+            min-height: 100vh;
         }
-        h1, h2 {
-            color: #2c3e50;
+        header {
+            position: relative;
+            background: #34495e;
+            padding: 20px;
+            text-align: center;
         }
-        p {
-            color: #34495e;
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .profile-pic-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        nav a {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 15px;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #32CD32; /* Green color */
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%; /* Full underline on hover or active */
+        }
+        section {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
+            background: #68819a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center-align all content */
+        }
+        .container {
+            text-align: center; /* Center-align the container content */
+        }
+        .visuals {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .visuals img {
+            max-width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #32CD32;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #28a428;
+        }
+        h2, h3 {
+            color: #fbffff;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        code {
+            background: #187a6513;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #c7254e;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #224b77;
+            color: #fff;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+        .glow-effect {
+            text-shadow: 0 0 8px rgba(0, 198, 255, 0.7), 0 0 16px rgba(0, 198, 255, 0.7);
+        }
+        .highlight {
+            color: #00c6ff;
+            font-weight: bold;
+        }
+        .fade-in {
+            animation: fadeIn 2s;
+        }
+        .name-highlight {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+        .social-icons a:hover {
+            color: #0077b5;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1 class="name-highlight">Venu Madhav Pentala</h1>
+    </header>
+    <nav>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="profile-pic-container">
+        <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+    </div>
+</body>
+</html>
     <h1>Design, Implementation, and Evaluation of EHR</h1>
     <h2>Transforming Healthcare Through Effective EHR Systems</h2>
     <p>
-        The design, implementation, and evaluation of Electronic Health Records (EHR) systems are 
-        critical steps in advancing healthcare delivery. A well-designed EHR should prioritize 
-        user-friendliness, interoperability, and compliance with health data standards like HL7 and LOINC. 
-        During implementation, stakeholder engagement and robust training ensure smooth adoption. Evaluation 
-        metrics such as clinical outcomes, patient satisfaction, and system usability determine the success 
-        of EHR integration. Leveraging data analytics and periodic reviews, EHR systems can evolve to meet 
-        the dynamic needs of healthcare providers and patients, enhancing care coordination and decision-making.
-    </p>
+        posted soon !
 </body>
 </html>
