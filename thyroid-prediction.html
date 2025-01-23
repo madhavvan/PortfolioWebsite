@@ -14,16 +14,23 @@
             background: linear-gradient(to bottom right, #303085, #107d67, #1a1a1a);
             color: #fff;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         header {
             position: relative;
             background: #34495e;
             padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
         header h1 {
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 3rem;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+            animation: glow 1.5s infinite alternate;
         }
         .profile-pic-container {
             position: absolute;
@@ -50,7 +57,11 @@
             font-size: 1.2em;
             margin: 0 15px;
             padding: 5px 0;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        nav a:hover {
+            transform: scale(1.1);
+            color: #00c6ff;
         }
         nav a::after {
             content: '';
@@ -70,65 +81,75 @@
             margin: 20px auto;
             padding: 20px;
             max-width: 900px;
-            background: #68819a;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
         h2, h3 {
-            color: #fbffff;
+            color: #00c6ff;
+            text-shadow: 0 0 5px rgba(0, 198, 255, 0.7);
+            margin-bottom: 15px;
         }
         ul {
             padding-left: 20px;
+            list-style: none;
         }
-        li {
+        ul li {
             margin-bottom: 10px;
+            background: rgba(0, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 5px;
+            transition: transform 0.2s ease;
+        }
+        ul li:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 255, 255, 0.3);
         }
         code {
-            background: #187a6513;
+            background: rgba(24, 122, 101, 0.1);
             padding: 2px 5px;
             border-radius: 4px;
             color: #c7254e;
         }
         footer {
             text-align: center;
-            padding: 10px;
+            padding: 20px;
             background: #224b77;
             color: #fff;
             margin-top: 20px;
             font-size: 0.9rem;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.5);
         }
         .glow-effect {
             text-shadow: 0 0 8px rgba(0, 198, 255, 0.7), 0 0 16px rgba(0, 198, 255, 0.7);
         }
         .highlight {
-            color: #00c6ff;
+            color: #ffd700;
             font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
         }
         .fade-in {
-            animation: fadeIn 2s;
-        }
-        .name-highlight {
-            font-size: 2.5em;
-            font-weight: bold;
-            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
+            animation: fadeIn 2s ease-in;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px rgba(0, 255, 255, 0.8); }
+            to { text-shadow: 0 0 20px rgba(0, 255, 255, 1); }
         }
         .social-icons a {
             margin: 0 10px;
             color: #fff;
             text-decoration: none;
             font-size: 1.5em;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
         .social-icons a:hover {
             color: #0077b5;
+            transform: scale(1.2);
         }
     </style>
 </head>
