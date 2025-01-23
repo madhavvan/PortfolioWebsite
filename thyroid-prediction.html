@@ -3,105 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thyroid Prediction Analysis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Healthcare Data Integration using ETL</title>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+         body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom right, #6dd5ed, #2193b0);
-            color: #ffffff;
+            background: linear-gradient(to bottom right, #303085, #107d67, #1a1a1a);
+            color: #fff;
+            min-height: 100vh;
         }
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #2c3e50;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-        }
-        h1 {
+        header {
+            position: relative;
+            background: #34495e;
+            padding: 20px;
             text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #34495e;
         }
-        h2 {
-            color: #2c3e50;
-            font-size: 1.8em;
-            margin-top: 30px;
-            margin-bottom: 10px;
-            border-left: 6px solid #2980b9;
-            padding-left: 10px;
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
         }
-        p {
+        .profile-pic-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        nav a {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
             font-size: 1.2em;
-            line-height: 1.8;
+            margin: 0 15px;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #32CD32; /* Green color */
+            transition: width 0.3s ease;
+        }
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%; /* Full underline on hover or active */
+        }
+        section {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 900px;
+            background: #68819a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3 {
+            color: #fbffff;
         }
         ul {
-            margin: 20px 0;
             padding-left: 20px;
-            font-size: 1.2em;
         }
-        ul li {
+        li {
             margin-bottom: 10px;
         }
-        .visuals {
-            text-align: center;
-            margin: 30px 0;
-        }
-        .visuals img {
-            max-width: 100%;
-            height: auto;
-            border: 4px solid #2980b9;
-            border-radius: 8px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-        .button {
-            display: inline-block;
-            padding: 15px 30px;
-            margin: 30px 0;
-            background: linear-gradient(to right, #f12711, #f5af19);
-            color: #ffffff;
-            font-size: 1.2em;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .button:hover {
-            background: linear-gradient(to right, #f5af19, #f12711);
-            transform: scale(1.05);
+        code {
+            background: #187a6513;
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: #c7254e;
         }
         footer {
             text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #ffffff;
-            border-top: 2px solid #f12711;
+            padding: 10px;
+            background: #224b77;
+            color: #fff;
+            margin-top: 20px;
+            font-size: 0.9rem;
         }
-       
-        .visuals img {
-            margin: 7px;
-            max-width: 50%;
-            height: auto;
-            border: 2px solid #cdd3d7;
-            border-radius: 8px;
-            box-shadow: 0 6px 6px rgba(0, 255, 8, 0.2);
+        .glow-effect {
+            text-shadow: 0 0 8px rgba(0, 198, 255, 0.7), 0 0 16px rgba(0, 198, 255, 0.7);
         }
-    
+        .highlight {
+            color: #00c6ff;
+            font-weight: bold;
+        }
+        .fade-in {
+            animation: fadeIn 2s;
+        }
+        .name-highlight {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         .social-icons a {
-            font-size: 24px;
             margin: 0 10px;
-            color: #333;
+            color: #fff;
             text-decoration: none;
+            font-size: 1.5em;
         }
-
         .social-icons a:hover {
-            color: #0077b5; /* LinkedIn blue */
+            color: #0077b5;
         }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="name-highlight">Venu Madhav Pentala</h1>
+    </header>
+    <nav>
+        <a href="index.html#about">About Me</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="profile-pic-container">
+        <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+    </div>
+</body>
+</html>
 
             
 </style> 
@@ -194,7 +238,26 @@
  
 
     <footer>
-        Designed by Venu Madhav Pentala | Powered by Passion for Innovation
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
+        <div class="social-icons">
+        <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:vpentala@iu.edu" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X">
+            <i class="fab fa-x"></i>
+        </a>
+        <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    &copy; 2025 Venu Madhav Pentala. All Rights Reserved. Designed by Venu Madhav Pentala | Powered by Passion for Innovation
     </footer>
 </body>
 </html>
