@@ -6,63 +6,64 @@
     <title>Nursing Home Quality Evaluation</title>
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            color: #333;
+            background: linear-gradient(to right, #141e30, #243b55);
+            color: #f5f5f5;
+            overflow-x: hidden;
         }
         .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: #fff;
+            max-width: 1200px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.1);
             padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1.5s ease-in-out;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
         h1 {
-            color: #4A00E0;
-            background: -webkit-linear-gradient(#4A00E0, #8E2DE2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
+            font-size: 3em;
+            color: #00c6ff;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
         }
         h2 {
-            color: #0056b3;
             text-align: center;
-            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #a6ffcb;
+            margin-bottom: 40px;
         }
         h3 {
-            color: #333;
-            border-left: 4px solid #4A00E0;
-            padding-left: 10px;
-            margin-bottom: 15px;
+            font-size: 1.8em;
+            color: #ffd700;
+            margin-top: 30px;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 5px;
         }
         p, li {
-            font-size: 1.1em;
+            font-size: 1.2em;
             line-height: 1.8;
+            margin-bottom: 15px;
         }
         a {
-            color: #4A00E0;
+            color: #00c6ff;
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s;
         }
         a:hover {
-            text-decoration: underline;
+            color: #ffd700;
         }
         ul {
             margin-left: 20px;
         }
         .reference {
-            font-size: 0.9em;
+            font-size: 1em;
             margin-top: 30px;
-            padding: 15px;
-            background: #f9f9f9;
-            border: 1px solid #ddd;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 8px;
         }
         .reference a {
@@ -72,38 +73,54 @@
         footer {
             text-align: center;
             margin-top: 50px;
-            font-size: 0.9em;
-            color: #666;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 1em;
         }
-        @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(30px);}
-            to {opacity: 1; transform: translateY(0);}
+        .animated-header {
+            text-align: center;
+            animation: slideIn 2s ease-out;
         }
-        .highlight {
-            background: #fed6e3;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .gradient-border {
+            padding: 20px;
+            border: 5px solid;
+            border-image-slice: 1;
+            border-width: 5px;
+            border-image-source: linear-gradient(to right, #ffd700, #00c6ff);
+            border-radius: 10px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Evaluating Variables Influencing Overall Rating in Nursing Homes</h1>
+        <h1 class="animated-header">Evaluating Variables Influencing Overall Rating in Nursing Homes</h1>
         <h2>By Anna Nelson, Ehinomen Odion, Venu Madhav Pentala, Veronica Cruz</h2>
 
         <h3>Introduction</h3>
-        <p>Poor quality of care in nursing homes has been a long-standing concern, with primary legislation established in 1987 to improve quality standards within nursing homes. This concern was further amplified by the <span class="highlight">COVID-19 pandemic</span>, which highlighted issues such as inadequate staffing levels, poor infection control, failures in oversight and regulation, and deficiencies that result in patient harm (National Academies of Sciences, Engineering, and Medicine, 2022). A comprehensive approach is necessary to resolve these issues, as lack of commitment to change endangers nursing home residents' well-being.</p>
+        <p>Poor quality of care in nursing homes has been a long-standing concern, with primary legislation established in 1987 to improve quality standards within nursing homes. This concern was further amplified by the <strong>COVID-19 pandemic</strong>, which highlighted issues such as inadequate staffing levels, poor infection control, failures in oversight and regulation, and deficiencies that result in patient harm (National Academies of Sciences, Engineering, and Medicine, 2022). A comprehensive approach is necessary to resolve these issues, as lack of commitment to change endangers nursing home residents' well-being.</p>
 
         <h3>Aim</h3>
         <p>We aim to determine if variables such as staffing rating, quality measure rating, state, provider type, ownership type, certified number of beds, number of facility-reported incidents, number of substantiated complaints, health inspection rating, and health survey rating influence the overall rating of nursing homes across the 50 United States, based on a 3-year period.</p>
 
         <h3>Purpose</h3>
-        <p>The purpose of this study is to improve the quality of care provided in nursing homes by identifying key factors contributing to care quality. Evaluating data helps determine whether these factors impact overall ratings in nursing homes, enabling the promotion of <span class="highlight">evidence-based guidelines</span> to improve staffing practices and overall quality of care.</p>
+        <p>The purpose of this study is to improve the quality of care provided in nursing homes by identifying key factors contributing to care quality. Evaluating data helps determine whether these factors impact overall ratings in nursing homes, enabling the promotion of <strong>evidence-based guidelines</strong> to improve staffing practices and overall quality of care.</p>
 
         <h3>Research Hypothesis</h3>
-        <p><strong>Null Hypothesis:</strong> Variables such as staffing rating, quality measure rating, state, provider type, ownership type, certified number of beds, number of facility-reported incidents, number of substantiated complaints, health inspection rating, and health survey rating have no influence on the overall rating in nursing homes.</p>
-        <p><strong>Alternative Hypothesis:</strong> These variables significantly influence the overall rating in nursing homes.</p>
+        <div class="gradient-border">
+            <p><strong>Null Hypothesis:</strong> Variables such as staffing rating, quality measure rating, state, provider type, ownership type, certified number of beds, number of facility-reported incidents, number of substantiated complaints, health inspection rating, and health survey rating have no influence on the overall rating in nursing homes.</p>
+            <p><strong>Alternative Hypothesis:</strong> These variables significantly influence the overall rating in nursing homes.</p>
+        </div>
 
         <h3>Methodology</h3>
         <ul>
@@ -133,7 +150,7 @@
         </div>
     </div>
     <footer>
-        &copy; 2025 Nursing Home Quality Evaluation | All Rights Reserved
+        &copy; 2025 Venu Madhav Pentala | All rights reserved.
     </footer>
 </body>
 </html>
