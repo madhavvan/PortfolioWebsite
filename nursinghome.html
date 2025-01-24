@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursing Home Quality Evaluation</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        h1 {
+            color: #4A00E0;
+            background: -webkit-linear-gradient(#4A00E0, #8E2DE2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #0056b3;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h3 {
+            color: #333;
+            border-left: 4px solid #4A00E0;
+            padding-left: 10px;
+            margin-bottom: 15px;
+        }
+        p, li {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        a {
+            color: #4A00E0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .reference {
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding: 15px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .reference a {
+            display: block;
+            margin-bottom: 10px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #666;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(30px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        .highlight {
+            background: #fed6e3;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Evaluating Variables Influencing Overall Rating in Nursing Homes</h1>
+        <h2>By Anna Nelson, Ehinomen Odion, Venu Madhav Pentala, Veronica Cruz</h2>
+
+        <h3>Introduction</h3>
+        <p>Poor quality of care in nursing homes has been a long-standing concern, with primary legislation established in 1987 to improve quality standards within nursing homes. This concern was further amplified by the <span class="highlight">COVID-19 pandemic</span>, which highlighted issues such as inadequate staffing levels, poor infection control, failures in oversight and regulation, and deficiencies that result in patient harm (National Academies of Sciences, Engineering, and Medicine, 2022). A comprehensive approach is necessary to resolve these issues, as lack of commitment to change endangers nursing home residents' well-being.</p>
+
+        <h3>Aim</h3>
+        <p>We aim to determine if variables such as staffing rating, quality measure rating, state, provider type, ownership type, certified number of beds, number of facility-reported incidents, number of substantiated complaints, health inspection rating, and health survey rating influence the overall rating of nursing homes across the 50 United States, based on a 3-year period.</p>
+
+        <h3>Purpose</h3>
+        <p>The purpose of this study is to improve the quality of care provided in nursing homes by identifying key factors contributing to care quality. Evaluating data helps determine whether these factors impact overall ratings in nursing homes, enabling the promotion of <span class="highlight">evidence-based guidelines</span> to improve staffing practices and overall quality of care.</p>
+
+        <h3>Research Hypothesis</h3>
+        <p><strong>Null Hypothesis:</strong> Variables such as staffing rating, quality measure rating, state, provider type, ownership type, certified number of beds, number of facility-reported incidents, number of substantiated complaints, health inspection rating, and health survey rating have no influence on the overall rating in nursing homes.</p>
+        <p><strong>Alternative Hypothesis:</strong> These variables significantly influence the overall rating in nursing homes.</p>
+
+        <h3>Methodology</h3>
+        <ul>
+            <li><strong>Data Collection:</strong> Nursing Home Quality, Staffing Dataset sourced from <a href="https://www.kaggle.com/datasets/thedevastator/nursing-home-quality-staffing" target="_blank">Kaggle</a>.</li>
+            <li><strong>Data Pre-processing:</strong> Null values were replaced with median scores.</li>
+            <li><strong>Data Extraction:</strong> Extracted all files and processed them in Jupyter Notebook.</li>
+        </ul>
+
+        <h3>Dataset</h3>
+        <p>Data was sourced from the Nursing Home Quality, Staffing dataset. The descriptive and inferential statistics were applied to analyze the data effectively.</p>
+
+        <h3>Classification Models Tested</h3>
+        <ul>
+            <li>Logistic Regression</li>
+            <li>Decision Tree</li>
+            <li>Random Forest</li>
+            <li>Support Vector Machine (SVM)</li>
+        </ul>
+
+        <h3>Results</h3>
+        <p>The alternative hypothesis demonstrated significant statistical significance, indicating a relationship between the variables (e.g., staffing rating, quality measure rating, state, and provider type) and the overall rating of nursing homes in the United States.</p>
+
+        <h3>References</h3>
+        <div class="reference">
+            <a href="https://www.kaggle.com/datasets/thedevastator/nursing-home-quality-staffing" target="_blank">The Devastator (2024). Nursing Home Quality, Staffing Dataset</a>
+            <a href="https://doi.org/10.17226/26526" target="_blank">National Academies of Sciences, Engineering, and Medicine. (2022). The National Imperative to Improve Nursing Home Quality</a>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Nursing Home Quality Evaluation | All Rights Reserved
+    </footer>
+</body>
+</html>
