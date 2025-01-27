@@ -4,93 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venu Madhav Pentala - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        header {
-            position: relative; /* Relative positioning for the profile picture container */
-            background: #34495e;
-            padding: 20px;
-            text-align: center;
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #1e3c72, #2a5298);
+            color: #fff;
         }
 
-        .profile-pic-container {
-            position: absolute; /* Absolute positioning for profile picture container */
-            top: 10px; /* Adjust for top-right corner */
-            right: 10px;
+        header {
+            background: #1abc9c;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        header .profile-pic-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
         }
 
         header .profile-pic {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%; /* Circular profile picture */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            object-fit: cover;
-        }
-
-        header .edit-icon {
-            position: absolute;
-            top: 5px;
-            right: 5px;
-            font-size: 20px;
-            color: white;
-            cursor: pointer;
-            background-color: rgba(0, 0, 0, 0.5);
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
-            padding: 5px;
-            display: none; /* Only show for admin */
-        }
-
-        body {
-            font-family: 'Comic Sans MS', 'Comic Sans';
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to bottom right, #303085, #107d67, #1a1a1a);
-            color: #fff;
-            min-height: 100vh;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            border: 3px solid #fff;
         }
 
         header h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 2.8em;
+        }
+
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2em;
         }
 
         nav {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             margin-top: 15px;
         }
 
         nav a {
-        position: relative;
-        color: #fff;
-        text-decoration: none;
-        font-size: 1.2em;
-        margin: 0 15px;
-        padding: 5px 0;
-        transition: color 0.3s ease;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background 0.3s;
         }
 
-        nav a::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: #32CD32; /* Green color */
-        transition: width 0.3s ease;
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-        width: 100%; /* Full underline on hover or active */
+        nav a:hover {
+            background: #16a085;
         }
 
         section {
-            padding: 40px;
+            padding: 40px 20px;
             text-align: center;
+        }
+
+        section h3 {
+            color: #f39c12;
         }
 
         .projects {
@@ -101,7 +83,8 @@
         }
 
         .project {
-            background: #1abc9c;
+            background: #34495e;
+            color: #fff;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
@@ -113,122 +96,97 @@
         }
 
         footer {
-            background: #34495e;
+            background: #1abc9c;
             text-align: center;
-            padding: 10px;
+            padding: 20px;
+            margin-top: 20px;
         }
 
         footer p {
-            margin: 0;
-        }
-
-        .social-icons {
-            margin-top: 10px;
+            margin: 5px 0;
         }
 
         .social-icons a {
-            margin: 0 10px;
             color: #fff;
-            text-decoration: none;
+            margin: 0 10px;
             font-size: 1.5em;
+            transition: color 0.3s;
         }
+
         .social-icons a:hover {
-            color: #0077b5; /* LinkedIn blue */
+            color: #34495e;
         }
 
-
-        .name-highlight {
-            font-size: 2.5em;
-            font-weight: bold;
-            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin: 0;
+        .gradient-border {
+            border: 2px solid;
+            border-image-slice: 1;
+            border-width: 3px;
+            border-image-source: linear-gradient(to right, #ff7e5f, #feb47b);
             padding: 20px;
+            border-radius: 8px;
+        }
+
+        a {
+            color: #f1c40f;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="animated-header">Evaluating Variables Influencing Overall Rating in Nursing Homes</h1>
-        <h2>By Anna Nelson, Ehinomen Odion, Venu Madhav Pentala, Veronica Cruz</h2>
-
-        <h3>Introduction</h3>
-        <p>Poor quality of care in nursing homes has been a long-standing concern, with primary legislation established in 1987 to improve quality standards within nursing homes. This concern was further amplified by the <strong>COVID-19 pandemic</strong>, which highlighted issues such as inadequate staffing levels, poor infection control, failures in oversight and regulation, and deficiencies that result in patient harm (National Academies of Sciences, Engineering, and Medicine, 2022). A comprehensive approach is necessary to resolve these issues, as lack of commitment to change endangers nursing home residents' well-being.</p>
-
-        <h3>Aim</h3>
-        <p>We aim to determine if variables such as staffing rating, quality measure rating, state, provider type, ownership type, certified number of beds, number of facility-reported incidents, number of substantiated complaints, health inspection rating, and health survey rating influence the overall rating of nursing homes across the 50 United States, based on a 3-year period.</p>
-
-        <h3>Purpose</h3>
-        <p>The purpose of this study is to improve the quality of care provided in nursing homes by identifying key factors contributing to care quality. Evaluating data helps determine whether these factors impact overall ratings in nursing homes, enabling the promotion of <strong>evidence-based guidelines</strong> to improve staffing practices and overall quality of care.</p>
-
-        <h3>Research Hypothesis</h3>
-        <div class="gradient-border">
-            <p><strong>Null Hypothesis:</strong> Variables such as staffing rating, quality measure rating, state, provider type, ownership type, certified number of beds, number of facility-reported incidents, number of substantiated complaints, health inspection rating, and health survey rating have no influence on the overall rating in nursing homes.</p>
-            <p><strong>Alternative Hypothesis:</strong> These variables significantly influence the overall rating in nursing homes.</p>
+    <header>
+        <h1>Evaluating Variables Influencing Overall Ratings in Nursing Homes</h1>
+        <p>By Anna Nelson, Ehinomen Odion, Venu Madhav Pentala, Veronica Cruz</p>
+        <div class="profile-pic-container">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
         </div>
+    </header>
 
+    <nav>
+        <a href="#introduction">Introduction</a>
+        <a href="#aim">Aim</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#results">Results</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="introduction">
+        <h3>Introduction</h3>
+        <p>Poor quality of care in nursing homes has been a long-standing concern...</p>
+    </section>
+
+    <section id="aim">
+        <h3>Aim</h3>
+        <p>We aim to determine if variables such as staffing rating, quality measure...</p>
+    </section>
+
+    <section id="methodology">
         <h3>Methodology</h3>
         <ul>
-            <li><strong>Data Collection:</strong> Nursing Home Quality, Staffing Dataset sourced from <a href="https://www.kaggle.com/datasets/thedevastator/nursing-home-quality-staffing" target="_blank">Kaggle</a>.</li>
-            <li><strong>Data Pre-processing:</strong> Null values were replaced with median scores.</li>
-            <li><strong>Data Extraction:</strong> Extracted all files and processed them in Jupyter Notebook.</li>
+            <li>Data Collection from Kaggle...</li>
+            <li>Data Pre-processing...</li>
         </ul>
+    </section>
 
-        <h3>Dataset</h3>
-        <p>Data was sourced from the Nursing Home Quality, Staffing dataset. The descriptive and inferential statistics were applied to analyze the data effectively.</p>
-
-        <h3>Classification Models Tested</h3>
-        <ul>
-            <li>Logistic Regression</li>
-            <li>Decision Tree</li>
-            <li>Random Forest</li>
-            <li>Support Vector Machine (SVM)</li>
-        </ul>
-
+    <section id="results">
         <h3>Results</h3>
-        <p>The alternative hypothesis demonstrated significant statistical significance, indicating a relationship between the variables (e.g., staffing rating, quality measure rating, state, and provider type) and the overall rating of nursing homes in the United States.</p>
+        <p>The alternative hypothesis demonstrated significant...</p>
+    </section>
 
-        <h3>References</h3>
-        <div class="reference">
-            <a href="https://www.kaggle.com/datasets/thedevastator/nursing-home-quality-staffing" target="_blank">The Devastator (2024). Nursing Home Quality, Staffing Dataset</a>
-            <a href="https://doi.org/10.17226/26526" target="_blank">National Academies of Sciences, Engineering, and Medicine. (2022). The National Imperative to Improve Nursing Home Quality</a>
-        </div>
-    </div>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
     <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="mailto:vpentala@iu.edu" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X">
-                    <i class="fab fa-x"></i>
-                </a>
-                <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
+        <h3>Contact Me</h3>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:vpentala@iu.edu"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/madhavvan/dot" target="_blank"><i class="fab fa-github"></i></a>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
-            <p>Explore the source code on <a href="https://github.com/madhavvan/dot" target="_blank" style="color: #6a11cb; text-decoration: none; font-weight: bold;">GitHub</a>.</p>
-        </div>
+        <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
