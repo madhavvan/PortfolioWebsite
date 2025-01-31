@@ -231,6 +231,30 @@
         nav a.active::after {
         width: 100%; /* Full underline on hover or active */
         }
+        
+        .image-section {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .image-container img {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -311,7 +335,17 @@
         </div>
     </section>
 
-
+    <section class="image-section">
+        <div class="container">
+            <h2>Autply Deployment Overview</h2>
+            <p>Discover the seamless process of deploying Autply and its professional setup.</p>
+            <div class="image-container">
+                <img src="images\autply1.jpg" alt="Autply Deployment Step 1">
+                <img src="images\autply2.jpg" alt="Autply Deployment Step 2">
+                
+            </div>
+        </div>
+    </section>
     
 
     <section id="contact">
