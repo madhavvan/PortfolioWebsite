@@ -3,99 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nursing Home Quality Evaluation</title>
+    <title>Nursing Home Analysis</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: radial-gradient(circle at center, #0a192f, #020c1b);
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 50px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #64ffda;
+            background: linear-gradient(to right, #141E30, #243B55);
+            color: white;
+            text-align: center;
         }
         .container {
-            max-width: 1100px;
-            margin: 80px auto;
-            text-align: center;
+            width: 80%;
+            margin: 50px auto;
             padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
         }
-        h1 {
-            font-size: 3em;
-            font-weight: bold;
-            color: #64ffda;
-        }
-        h3 {
-            font-size: 1.8em;
-            color: #ccd6f6;
-        }
-        p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #a8b2d1;
-        }
-        .cta {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #0a192f;
-            background: #64ffda;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .cta:hover {
-            background: #00c6ff;
+        .button {
+            background: #00c3ff;
             color: white;
-            transform: scale(1.05);
-        }
-        .hero-image {
+            padding: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+            border: none;
+            transition: 0.3s;
+            display: block;
             width: 100%;
-            max-height: 400px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-top: 40px;
-            box-shadow: 0 4px 20px rgba(0, 255, 200, 0.2);
         }
-        .footer {
-            text-align: center;
-            padding: 20px 0;
-            font-size: 0.9em;
-            color: #8892b0;
-            margin-top: 50px;
+        .button:hover {
+            background: #008ecc;
+        }
+        .dropdown-content {
+            margin-top: 20px;
+        }
+        .section {
+            margin-top: 10px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin-top: 5px;
         }
     </style>
+    <script>
+        function toggleContent(sectionId) {
+            let content = document.getElementById(sectionId);
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">NHQ Analytics</div>
-    </div>
-
     <div class="container">
-        <h1>Powering Healthcare Analytics with Real-World Data</h1>
-        <h3>Improving Nursing Home Care Standards</h3>
-        <p>Leverage cutting-edge data insights to enhance patient care, optimize staffing, and ensure high-quality healthcare services. Our research focuses on understanding key variables that influence nursing home ratings, enabling data-driven improvements in care delivery.</p>
-        <a href="#" class="cta">Get the Report</a>
-        <img src="/mnt/data/pptx_images/image_1.png" alt="Healthcare Analytics" class="hero-image">
+        <button class="button" onclick="document.getElementById('projectContainer').style.display='block'">Nursing Home Project</button>
     </div>
-
-    <div class="footer">&copy; 2025 NHQ Analytics | All Rights Reserved</div>
+    
+    <div id="projectContainer" class="container" style="display: none;">
+        <h2>Nursing Home Staffing & Quality Analysis</h2>
+        <div class="dropdown-content">
+            <div class="section">
+                <button class="button" onclick="toggleContent('introduction')">Introduction</button>
+                <div id="introduction" class="content">
+                    <p>Poor quality of care in nursing homes has been a long-standing concern. Our study examines the link between staffing rating and overall rating based on health survey score results over a 3-year period.</p>
+                </div>
+            </div>
+            <div class="section">
+                <button class="button" onclick="toggleContent('focus')">Research Focus</button>
+                <div id="focus" class="content">
+                    <p>We aim to determine if variables such as staffing rating, quality measure rating, and health survey rating have an influence on overall rating.</p>
+                </div>
+            </div>
+            <div class="section">
+                <button class="button" onclick="toggleContent('methodology')">Methodology</button>
+                <div id="methodology" class="content">
+                    <p>We employ quantitative research methods, using statistical analysis and machine learning techniques on nursing home datasets.</p>
+                </div>
+            </div>
+            <div class="section">
+                <button class="button" onclick="toggleContent('conclusion')">Conclusion</button>
+                <div id="conclusion" class="content">
+                    <p>Our findings suggest a significant link between staffing quality and overall nursing home ratings, highlighting areas for improvement.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
