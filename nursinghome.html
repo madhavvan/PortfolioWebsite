@@ -3,94 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nursing Home Analysis</title>
+    <title>Venu Madhav Pentala - Portfolio</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #141E30, #243B55);
-            color: white;
+        header {
+            position: relative;
+            background: #34495e;
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
+        }
+        .profile-pic-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        header .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        nav a {
+            position: relative;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin: 0 15px;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #32CD32; /* Green color */
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+        width: 100%; /* Full underline on hover or active */
+        }
+
+        section {
+            padding: 40px;
             text-align: center;
         }
-        .container {
-            width: 80%;
-            margin: 50px auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-        }
-        .button {
-            background: #00c3ff;
-            color: white;
-            padding: 15px;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 5px;
-            margin: 10px;
-            border: none;
-            transition: 0.3s;
-            display: block;
-            width: 100%;
-        }
-        .button:hover {
-            background: #008ecc;
-        }
-        .dropdown-content {
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
-        .section {
+
+        .project {
+            background: #1abc9c;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .project:hover {
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: #34495e;
+            text-align: center;
+            padding: 10px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .social-icons {
             margin-top: 10px;
         }
-        .content {
-            display: none;
-            padding: 10px;
+
+        .social-icons a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+        }
+        .social-icons a:hover {
+            color: #010000; /* LinkedIn blue */
+        }
+
+
+        .name-highlight {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .animation-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .circle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            margin-top: 5px;
+            border-radius: 50%;
+            animation: float 5s infinite linear;
         }
+        .break-container {
+            width: 60%;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+            overflow: visible;/*
+            min-height: 100px; /*
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.3);
+        }
+
+
+        .break-container:hover {
+            transform: scale(1.05);
+        }
+
+        .break-content {
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease-in-out; /* Smooth fade-in */
+        }
+        .break-content ul {
+            list-style-type: disc !important; /* ✅ Forces bullet points */
+            margin-left: 30px; /* ✅ Adjusts spacing for visibility */
+            padding-left: 20px;
+        }
+        .break-content li {
+            margin-bottom: 10px; /* ✅ Ensures proper spacing */
+            display: list-item; /* ✅ Forces list items */
+        }
+
+
+
+        .piece {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+            pointer-events: none; /* Prevents blocking other elements */
+        }
+        body {
+            font-family: 'Times New Roman MS', 'Times New Roman';
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #303085, #107d67, #1a1a1a);
+            color: #fff;
+            min-height: 100vh;
+            overflow-y: visible; /*    
+        }
+\        .piece {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+            pointer-events: none; /* Prevents blocking other elements */
+        }
+        .break-container, 
+        .break-content, 
+        .break-content h2, 
+        .break-content p {
+            cursor: pointer !important;
+        }
+
+        .animation-bg {
+            pointer-events: none;
+        }
+        @keyframes float {
+            0% {
+                bottom: -100px; /* ✅ Starts below the viewport */
+                opacity: 1;
+            }
+            100% {
+                bottom: 100vh; /* ✅ Floats beyond the viewport */
+                opacity: 0;
+            }
+        }
+
+
     </style>
-    <script>
-        function toggleContent(sectionId) {
-            let content = document.getElementById(sectionId);
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
-        }
-    </script>
 </head>
 <body>
-    <div class="container">
-        <button class="button" onclick="document.getElementById('projectContainer').style.display='block'">Nursing Home Project</button>
-    </div>
-    
-    <div id="projectContainer" class="container" style="display: none;">
-        <h2>Nursing Home Staffing & Quality Analysis</h2>
-        <div class="dropdown-content">
-            <div class="section">
-                <button class="button" onclick="toggleContent('introduction')">Introduction</button>
-                <div id="introduction" class="content">
-                    <p>Poor quality of care in nursing homes has been a long-standing concern. Our study examines the link between staffing rating and overall rating based on health survey score results over a 3-year period.</p>
-                </div>
-            </div>
-            <div class="section">
-                <button class="button" onclick="toggleContent('focus')">Research Focus</button>
-                <div id="focus" class="content">
-                    <p>We aim to determine if variables such as staffing rating, quality measure rating, and health survey rating have an influence on overall rating.</p>
-                </div>
-            </div>
-            <div class="section">
-                <button class="button" onclick="toggleContent('methodology')">Methodology</button>
-                <div id="methodology" class="content">
-                    <p>We employ quantitative research methods, using statistical analysis and machine learning techniques on nursing home datasets.</p>
-                </div>
-            </div>
-            <div class="section">
-                <button class="button" onclick="toggleContent('conclusion')">Conclusion</button>
-                <div id="conclusion" class="content">
-                    <p>Our findings suggest a significant link between staffing quality and overall nursing home ratings, highlighting areas for improvement.</p>
-                </div>
-            </div>
+    <header>
+        <h1 class="name-highlight">Venu Madhav Pentala</h1>
+        <nav>
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="profile-pic-container">
+            <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
         </div>
-    </div>
+        
+    </header>
+    
+    <!-- <div class="break-container" onclick="breakContainer(this)" ontouchstart="breakContainer(this)"> -->
+        <div class="break-container" onclick="breakContainer(this)" data-title="Introduction">
+            <h2>Introduction</h2>
+        </div>
+        
+        <div class="break-container" onclick="breakContainer(this)" data-title="AIM">
+            <h2>AIM</h2>
+        </div>
+        
+        <div class="break-container" onclick="breakContainer(this)" data-title="Purpose">
+            <h2>Purpose</h2>
+        </div>
+        
+        <div class="break-container" onclick="breakContainer(this)" data-title="Research Hypothesis">
+            <h2>Research Hypothesis</h2>
+        </div>
+        
+        <div class="break-container" onclick="breakContainer(this)" data-title="Methodology">
+            <h2>Methodology</h2>
+        </div>
+        
+        <div class="break-container" onclick="breakContainer(this)" data-title="Descriptive & Inferential Statistics">
+            <h2>Descriptive & Inferential Statistics</h2>
+        </div>
+        
+        <div class="break-container" onclick="breakContainer(this)" data-title="Visualization">
+            <h2>Visualization</h2>
+        </div>
+        
+        <div class="break-container" onclick="breakContainer(this)" data-title="Hypothesis Testing Results">
+            <h2>Hypothesis Testing Results</h2>
+        </div>
+        <div class="break-container" onclick="breakContainer(this)" data-title="Team Members">
+            <h2>Team Members</h2>
+        </div>
+     
+        
+        <div class="break-container" onclick="breakContainer(this)" data-title="References">
+            <h2>References</h2>
+        </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:vpentala@iu.edu" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X (Twitter)">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            
+        </section>
+    
+        <footer>
+            <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
+        </footer>
+    
+        
+
+    <!-- Background Animation -->
+    <div class="animation-bg"></div>
+
+
+
+
+    <script>
+        function breakContainer(element) {
+            // If the container is already broken, reset it
+            if (element.classList.contains("broken")) {
+                element.classList.remove("broken");
+                element.innerHTML = `<h2>${element.dataset.title}</h2>`; // Restore the original title
+                return;
+            }
+
+            // Mark the container as broken
+            element.classList.add("broken");
+
+            // Determine content based on the header inside the container
+            let title = element.dataset.title || element.querySelector("h2").innerText;
+            let content = "";
+
+            if (title === "Introduction") {
+                content = `
+                    <h2>Introduction</h2>
+                    <p>Poor quality of care in nursing homes has been a long-standing concern, leading to legislation in 1987 to improve standards.</p>
+                    <p>The COVID-19 pandemic further exposed deficiencies such as:</p>
+                    <ul>
+                        <li>Inadequate staffing levels</li>
+                        <li>Poor infection control measures</li>
+                        <li>Failures in oversight and regulation</li>
+                        <li>Deficiencies causing patient harm</li>
+                    </ul>
+                `;
+            } else if (title === "AIM") {
+                content = `
+                    <h2>AIM</h2>
+                    <p>We aim to determine if factors such as staffing rating, quality measure rating, provider type, ownership type, and health survey ratings influence the overall rating of nursing homes.</p>
+                `;
+            } else if (title === "Purpose") {
+                content = `
+                    <h2>Purpose</h2>
+                    <p>The purpose of this study is to improve the quality of care in nursing homes by identifying key contributing factors and using data-driven insights to promote better staffing practices.</p>
+                `;
+            } else if (title === "Research Hypothesis") {
+                content = `
+                    <h2>Research Hypothesis</h2>
+                    <p><strong>Null Hypothesis:</strong> Variables such as staffing rating, quality measure rating, and ownership type do not influence overall nursing home ratings.</p>
+                    <p><strong>Alternative Hypothesis:</strong> These variables significantly impact nursing home ratings.</p>
+                `;
+            } else if (title === "Methodology") {
+                content = `
+                    <h2>Methodology</h2>
+                    <p><strong>Data Collection:</strong> Nursing Home Quality & Staffing Dataset from Kaggle.</p>
+                    <p><strong>Data Pre-Processing:</strong> Null values replaced with median scores.</p>
+                    <p><strong>Data Extraction:</strong> Extracted all files and moved to Jupyter Notebook for analysis.</p>
+                `;
+            } else if (title === "Descriptive & Inferential Statistics") {
+                content = `
+                    <h2>Descriptive & Inferential Statistics</h2>
+                    <p><strong>Descriptive Statistics:</strong> Mean, median, standard deviation calculations.</p>
+                    <p><strong>Classification Models Tested:</strong> Logistic Regression, Decision Tree, Random Forest, Support Vector Machine.</p>
+                    <p><strong>Inferential Statistics:</strong> Shapiro-Wilk test, Q-Q plot analysis, Kruskal-Wallis test.</p>
+                `;
+            } else if (title === "Visualization") {
+                content = `
+                    <h2>Visualization</h2>
+                    <p><strong>Choropleth Map:</strong> Displays state-by-state variations in nursing home ratings.</p>
+                    <p><strong>ROC Curve – Logistic Regression:</strong> Measures model performance in predicting ratings.</p>
+                    <img src="images/image.jpg" alt="Correlation Heatmap" style="width: 100%; max-width: 800px; display: block; margin: auto; border-radius: 8px; box-shadow: 2px 2px 10px rgba(0,0,0,0.2);">
+
+                `;
+            } else if (title === "Hypothesis Testing Results") {
+                content = `
+                    <h2>Hypothesis Testing Results</h2>
+                    <p>The alternative hypothesis is supported: staffing levels, provider type, and health inspections significantly impact overall nursing home ratings.</p>
+                    <ul>
+                        <li>Higher staffing levels = Better ratings</li>
+                        <li>More complaints/incidents = Lower ratings</li>
+                        <li>Non-profit nursing homes perform better than for-profits</li>
+                    </ul>
+                `;
+            } else if (title === "Team Members") {
+                    content = `
+                        <h2>Team Members</h2>
+                        <ul>
+                            <li><strong>Anna Nelson</strong></li>
+                            <li><strong>Ehinomen Odion</strong></li>
+                            <li><strong>Venu Madhav Pentala</strong></li>
+                            <li><strong>Veronica Cruz</strong></li>
+                        </ul>
+                    `;
+
+            } else if (title === "References") {
+                content = `
+                    <h2>References</h2>
+                    <p><strong>Data Source:</strong> The Devastator (2024). Nursing Home Quality & Staffing Dataset from Kaggle.</p>
+                    <p><strong>Supporting Literature:</strong> National Academies of Sciences, Engineering, and Medicine (2022). <a href="https://doi.org/10.17226/26526">The National Imperative to Improve Nursing Home Quality</a>.</p>
+                `;
+            }
+
+            element.dataset.title = title; // Store the original title for reset
+            element.style.overflow = "visible"; 
+            element.style.height = "auto"; 
+            element.innerHTML = ""; // Remove original text
+
+            const numPieces = 16;
+            const gridSize = 4;
+
+            for (let row = 0; row < gridSize; row++) {
+                for (let col = 0; col < gridSize; col++) {
+                    let piece = document.createElement("div");
+                    piece.classList.add("piece");
+                    piece.style.width = `${100 / gridSize}%`;
+                    piece.style.height = `${100 / gridSize}%`;
+                    piece.style.position = "absolute";
+                    piece.style.top = `${(row * 100) / gridSize}%`;
+                    piece.style.left = `${(col * 100) / gridSize}%`;
+                    piece.style.background = "rgba(255, 255, 255, 0.4)";
+                    piece.style.transition = "transform 0.4s ease-out, opacity 0.4s ease-out";
+
+                    let xMove = (Math.random() - 0.5) * 300;
+                    let yMove = (Math.random() - 0.5) * 300;
+                    let rotation = Math.random() * 360;
+
+                    element.appendChild(piece);
+
+                    setTimeout(() => {
+                        piece.style.transform = `translate(${xMove}px, ${yMove}px) rotate(${rotation}deg)`;
+                        piece.style.opacity = "0";
+                    }, 50);
+                }
+            }
+
+            // Reveal content immediately with fade-in
+            setTimeout(() => {
+                element.innerHTML = `<div class="break-content">${content}</div>`;
+                element.lastChild.style.opacity = "0";
+                element.lastChild.style.transition = "opacity 0.3s ease-in-out";
+                setTimeout(() => {
+                    element.lastChild.style.opacity = "1";
+                }, 50);
+            }, 100);
+        }
+
+        function createFloatingCircles() {
+            const animationBg = document.querySelector('.animation-bg');
+            const introContainer = document.querySelector('.break-container');
+
+            for (let i = 0; i < 30; i++) {
+                let circle = document.createElement('div');
+                circle.classList.add('circle');
+                let size = Math.random() * 40 + 10;
+                circle.style.width = size + 'px';
+                circle.style.height = size + 'px';
+                circle.style.left = Math.random() * 100 + 'vw';
+                circle.style.bottom = `${Math.random() * -100 - 50}px`; // ✅ Starts below the screen randomly
+
+
+                circle.style.animationDuration = Math.random() * 3 + 3 + 's';
+                circle.style.animationDelay = Math.random() * 3 + 's';
+                animationBg.appendChild(circle);
+                // Function to check if a bubble collides with the container
+                function checkCollision() {
+                    const circleBounds = circle.getBoundingClientRect();
+                    const introBounds = introContainer.getBoundingClientRect();
+
+                    if (
+                        circleBounds.bottom >= introBounds.top &&
+                        circleBounds.top <= introBounds.bottom &&
+                        circleBounds.right >= introBounds.left &&
+                        circleBounds.left <= introBounds.right
+                    ) {
+                        circle.style.display = 'none'; // Hide the bubble when it collides
+                    }
+                }
+
+                // Attach collision detection to animation
+                circle.addEventListener('animationiteration', checkCollision);
+                animationBg.appendChild(circle);
+            }
+        }
+
+                // Re-run collision detection after breaking
+                setTimeout(() => {
+                    createFloatingCircles();
+            }, 200);
+
+
+    </script>
+
+    
 </body>
 </html>
