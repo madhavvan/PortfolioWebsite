@@ -242,8 +242,8 @@
     <header>
         <h1 class="name-highlight">Venu Madhav Pentala</h1>
         <nav>
-            <a href="#about">About Me</a>
-            <a href="#projects">Projects</a>
+            <a href="index.html#about">About Me</a>
+            <a href="index.html#projects">Projects</a>
             <a href="#contact">Contact</a>
         </nav>
         <div class="profile-pic-container">
@@ -419,13 +419,13 @@
                     `;
 
             } else if (title === "References") {
-                content = `
-                    <h2>References</h2>
-                    <p><strong>Data Source:</strong> The Devastator (2024). Nursing Home Quality & Staffing Dataset from Kaggle.</p>
-                    <p><strong>Supporting Literature:</strong> National Academies of Sciences, Engineering, and Medicine (2022). <a href="https://doi.org/10.17226/26526">The National Imperative to Improve Nursing Home Quality</a>.</p>
-                `;
-            }
-
+                    content = `
+                        <h2>References</h2>
+                        <p><strong>Data Source:</strong> The Devastator (2024). Nursing Home Quality & Staffing Dataset from Kaggle.</p>
+                        <p><strong>Supporting Literature:</strong> National Academies of Sciences, Engineering, and Medicine (2022). 
+                        <a href="https://doi.org/10.17226/26526" target="_blank" onclick="event.stopPropagation();">The National Imperative to Improve Nursing Home Quality</a>.</p>
+                    `;
+                
             element.dataset.title = title; // Store the original title for reset
             element.style.overflow = "visible"; 
             element.style.height = "auto"; 
