@@ -117,22 +117,23 @@
             padding: 20px;
         }
         .animation-bg {
-            position: absolute;
+            position: fixed;
             width: 100%;
             height: 100%;
             top: 0;
             left: 0;
             overflow: hidden;
-            z-index: 1;
+            z-index: -1;
         }
-        .circle {
+        /* .circle {
             position: absolute;
+            
             width: 30px;
             height: 30px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             animation: float 5s infinite linear;
-        }
+        } */
         .break-container {
             width: 60%;
             margin: 20px auto;
@@ -166,9 +167,26 @@
             margin-bottom: 10px; /* ✅ Ensures proper spacing */
             display: list-item; /* ✅ Forces list items */
         }
+        .piece {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+            pointer-events: none; /* Prevents blocking other elements */
+        }
 
 
-
+        .circle {
+            position: absolute;
+            bottom: -100px;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 5s infinite linear;
+            z-index: 0; /* 
+        }
         .piece {
             position: absolute;
             width: 50%;
@@ -463,7 +481,9 @@
                 circle.style.width = size + 'px';
                 circle.style.height = size + 'px';
                 circle.style.left = Math.random() * 100 + 'vw';
-                circle.style.bottom = `${Math.random() * -100 - 50}px`; // ✅ Starts below the screen randomly
+                circle.style.bottom = "-120px"; // ✅ Ensures all bubbles spawn below screen
+                circle.style.zIndex = "0"; // ✅ Ensures visibility
+                animationBg.appendChild(circle);
 
 
                 circle.style.animationDuration = Math.random() * 3 + 3 + 's';
