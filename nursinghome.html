@@ -7,7 +7,7 @@
     <style>
         header {
             position: relative;
-            background: #34495e;
+            background: #1e2833;
             padding: 20px;
             text-align: center;
             z-index: 10;
@@ -84,7 +84,7 @@
         footer {
             background: #34495e;
             text-align: center;
-            padding: 10px;
+            padding: 0.1px;
         }
 
         footer p {
@@ -167,7 +167,7 @@
         .break-content li {
             position: relative;
             font-size: 18px;
-            color: #222;
+            color: #f4f4f4;
             padding-left: 30px; /* ✅ Space for custom arrow */
             margin-bottom: 8px;
         }
@@ -201,6 +201,7 @@
             animation: float 5s infinite linear;
             z-index: 0; /* 
         }
+
         .piece {
             position: absolute;
             width: 50%;
@@ -209,13 +210,14 @@
             transition: transform 0.2s ease-out, opacity 0.2s ease-out;
             pointer-events: none; /* Prevents blocking other elements */
         }
+       
         body {
             font-family: 'Times New Roman MS', 'Times New Roman';
             font-size: 1.2em;
             line-height: 1.6;
             margin: 0;
             padding: 0;
-            background: linear-gradient(to bottom right, #303085, #107d67, #1a1a1a);
+            background: linear-gradient(to bottom right, #09090e, #27403b, #841c1c);
             color: #fff;
             min-height: 100vh;
             overflow-y: visible; /*    
@@ -228,6 +230,7 @@
             transition: transform 0.2s ease-out, opacity 0.2s ease-out;
             pointer-events: none; /* Prevents blocking other elements */
         }
+        
         .break-container, 
         .break-content, 
         .break-content h2, 
@@ -241,14 +244,9 @@
         .crazy-title {
             position: relative;
             text-align: center;
+            font-style: initial;
             margin-top: 30px; /* ✅ Creates space below header */
             padding: 40px 20px;
-            background: linear-gradient(45deg, #000428, #004e92, #ff512f, #dd2476);
-            background-size: 400% 400%;
-            animation: bg-animation 8s infinite alternate;
-            color: white;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
             border-radius: 12px; /* ✅ Softens edges */
         }
 
@@ -327,31 +325,33 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://mail.google.com/mail/?view=cm&to=pentalavenumadhav@gmail.com" target="_blank" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                
-                <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X (Twitter)">
-                    <i class="fab fa-x-twitter"></i>
-                </a>
-                <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
+
             
-        </section>
+        
     
         <footer>
+            <section id="contact">
+                <h2>Contact Me</h2>
+                <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://mail.google.com/mail/?view=cm&to=pentalavenumadhav@gmail.com" target="_blank" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    
+                    <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/madhavvan_?igsh=MW5kdjNpMDkyOWFjMA%3D%3D&utm_source=qr" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </section>
             <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
         </footer>
     
