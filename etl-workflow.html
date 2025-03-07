@@ -27,6 +27,13 @@
             margin: 0;
             font-size: 2.5rem;
         }
+        .main-header {
+            background: #000000;
+            padding: 20px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+        }
         .profile-pic-container {
             position: absolute;
             top: 10px;
@@ -137,15 +144,17 @@
 <body>
     <header>
         <h1 class="name-highlight">Venu Madhav Pentala</h1>
+        <nav>
+            <a href="index.html#about">About Me</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="profile-pic-container">
+            <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+        </div>
     </header>
-    <nav>
-        <a href="index.html#about">About Me</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="profile-pic-container">
-        <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
-    </div>
+
+
 
 
 </head>
@@ -153,8 +162,8 @@
 
 
 </header>
-    <header>
-        <h1 class="glow-effect">Healthcare Data Integration using ETL</h1>
+    <header class="main-header">
+            <h1 class="glow-effect">Healthcare Data Integration using ETL</h1>
     </header>
 
     <section class="fade-in">
