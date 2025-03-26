@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venu Madhav Pentala - Portfolio</title>
     <style>
+        html {
+        scroll-behavior: smooth;
+        }
+
         header {
             position: relative; /* Relative positioning for the profile picture container */
-            background: #34495e;
+            background: #070a0c;
             padding: 20px;
             text-align: center;
         }
+        
 
         .profile-pic-container {
             position: absolute; /* Absolute positioning for profile picture container */
@@ -37,6 +42,9 @@
             border-radius: 50%;
             padding: 5px;
             display: none; /* Only show for admin */
+        }
+        header {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
         body {
@@ -91,6 +99,47 @@
         section {
             padding: 40px;
             text-align: center;
+        }
+        #globe-wrapper {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 140px;
+        height: 140px;
+        z-index: 2;
+        pointer-events: none; /* Prevents blocking other interactions */
+        }
+
+        #globe {
+        width: 100%;
+        height: 100%;
+        }
+
+
+
+
+        @keyframes spinGlobe {
+        from {
+            transform: rotateX(20deg) rotateY(0deg);
+        }
+        to {
+            transform: rotateX(20deg) rotateY(360deg);
+        }
+        }
+
+
+        @keyframes rainbowGlow {
+        0%   { color: red; }
+        10%  { color: orange; }
+        20%  { color: yellow; }
+        30%  { color: green; }
+        40%  { color: cyan; }
+        50%  { color: blue; }
+        60%  { color: indigo; }
+        70%  { color: violet; }
+        80%  { color: pink; }
+        90%  { color: white; }
+        100% { color: red; }
         }
 
         .projects {
@@ -150,8 +199,11 @@
     </style>
 </head>
 <body>
+    <div id="globe-wrapper">
+        <canvas id="globe"></canvas>
+      </div>
     <header>
-        <h1 class="name-highlight">Venu Madhav Pentala</h1>
+        <h1 class="name-highlight">VENU MADHAV PENTALA</h1>
         <nav>
             <a href="#about">About Me</a>
             <a href="#projects">Projects</a>
@@ -247,63 +299,90 @@
     </footer>
 
     <script>
-        async function loadProfilePicture() {
-            try {
-                const response = await fetch('http://127.0.0.1:5000/profile-picture');
-                const data = await response.json();
-                const profilePicture = document.getElementById('profilePicture');
-                profilePicture.src = data.profilePicture;
-            } catch (error) {
-                console.error("Error loading profile picture:", error);
+        const canvas = document.getElementById('globe');
+        const ctx = canvas.getContext('2d');
+        const wrapper = document.getElementById('globe-wrapper');
+    
+        const NAME = 'yM oiloftroP';
+        let rotation = 0;
+        const ROTATION_SPEED = -0.01; 
+        const devicePixelRatio = window.devicePixelRatio || 1;
+    
+        function resizeCanvas() {
+            const size = wrapper.clientWidth * devicePixelRatio;
+            canvas.width = size;
+            canvas.height = size;
+            canvas.style.width = wrapper.clientWidth + 'px';
+            canvas.style.height = wrapper.clientHeight + 'px';
+            return size;
+        }
+    
+        function generateNameSphere() {
+            const points = [];
+            const layers = 8; 
+            const chars = NAME.trim().split('');
+            let index = 0;
+    
+            for (let latIndex = 0; latIndex < layers; latIndex++) {
+                const lat = -70 + (latIndex * 20); 
+                const charsInBand = chars.length + latIndex * 2; 
+                for (let i = 0; i < charsInBand; i++) {
+                    const lng = (i / charsInBand) * 360 - 180;
+                    const char = chars[index % chars.length];
+                    points.push({ lat, lng, char });
+                    index++;
+                }
             }
+    
+            return points;
         }
-
-        window.onload = loadProfilePicture;
-
-        const isAdmin = sessionStorage.getItem('isAdmin') === 'true';
-
-        if (isAdmin) {
-            document.getElementById('editIcon').style.display = 'block';
-
-            document.getElementById('editIcon').addEventListener('click', () => {
-                const fileInput = document.createElement('input');
-                fileInput.type = 'file';
-                fileInput.accept = 'image/*';
-
-                fileInput.onchange = async (event) => {
-                    const file = event.target.files[0];
-                    if (!file) {
-                        alert("Please select a file.");
-                        return;
-                    }
-
-                    const formData = new FormData();
-                    formData.append('file', file);
-
-                    try {
-                        const response = await fetch('http://127.0.0.1:5000/upload', {
-                            method: 'POST',
-                            body: formData,
-                        });
-
-                        const result = await response.json();
-                        if (result.success) {
-                            const profilePicture = document.getElementById('profilePicture');
-                            profilePicture.src = result.imageUrl;
-                            alert("Profile picture updated successfully!");
-                        } else {
-                            alert("Upload failed: " + result.message);
-                        }
-                    } catch (error) {
-                        console.error("Error uploading file:", error);
-                        alert("An error occurred. Please try again.");
-                    }
-                };
-
-                fileInput.click();
+    
+        const points = generateNameSphere();
+    
+        function draw(rotation) {
+            const size = resizeCanvas();
+            const r = size / 2.5;
+            const cx = size / 2;
+            const cy = size / 2;
+    
+            ctx.clearRect(0, 0, size, size);
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+    
+            points.forEach(p => {
+                const phi = (90 - p.lat) * Math.PI / 180;
+                const theta = (p.lng + rotation * 180 / Math.PI) * Math.PI / 180;
+    
+                const x = r * Math.sin(phi) * Math.cos(theta);
+                const y = r * Math.cos(phi);
+                const z = r * Math.sin(phi) * Math.sin(theta);
+    
+                if (z > 0) {
+                    ctx.globalAlpha = 0.3 + 0.7 * (z / r);
+    
+                    const hue = (rotation * 100 + x + y) % 360;
+                    const scale = 0.7 + (z / r) * 0.8;
+                    ctx.fillStyle = `hsl(${hue}, 85%, 65%)`;
+                    ctx.font = `${14 * scale}px 'Segoe UI', sans-serif`;
+    
+                    ctx.fillText(p.char, cx + x, cy + y);
+                }
             });
+    
+            ctx.globalAlpha = 1;
         }
+    
+        function animate() {
+            rotation += ROTATION_SPEED; 
+            draw(rotation);
+            requestAnimationFrame(animate);
+        }
+    
+        resizeCanvas();
+        animate();
+        window.addEventListener('resize', resizeCanvas);
     </script>
+    
 </body>
 </html>
 
