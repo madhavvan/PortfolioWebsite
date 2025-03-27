@@ -196,6 +196,105 @@
             margin: 0;
             padding: 20px;
         }
+        #ai-bot-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        }
+
+        #ai-bot-avatar {
+        background: radial-gradient(circle at center, #0ff, #00f, #002);
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: pulseBot 2s infinite;
+        cursor: pointer;
+        box-shadow: 0 0 15px #00ffff;
+        }
+
+        #ai-bot-avatar i {
+        font-size: 2em;
+        color: #fff;
+        }
+
+        #ai-chat-box {
+        display: none;
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 280px;
+        background: #1e1e2f;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        color: white;
+        }
+
+        #ai-chat-box input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #333;
+        color: white;
+        }
+
+        @keyframes pulseBot {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 10px #0ff;
+        }
+        50% {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px #0ff;
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 10px #0ff;
+        }
+        }
+
+        #chat-input-area {
+        display: flex;
+        gap: 5px;
+        margin-top: 10px;
+        }
+
+        #chat-input-area input {
+        flex: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 8px;
+        background: #333;
+        color: white;
+        }
+
+        #chat-input-area button {
+        padding: 8px 12px;
+        background: #00ffff;
+        border: none;
+        border-radius: 8px;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        }
+
+        #chat-input-area button:hover {
+        background: #00cccc;
+        }
+
+        #chat-messages {
+        max-height: 200px;
+        overflow-y: auto;
+        padding-right: 5px;
+        }
+
     </style>
 </head>
 <body>
@@ -248,7 +347,23 @@
         </div>
         
     </section>
-
+    <div id="ai-bot-container">
+        <div id="ai-bot-avatar">
+          <i class="fas fa-robot"></i>
+        </div>
+        <div id="ai-chat-box" style="display:none;">
+          <div id="chat-messages">
+            <p><strong>AI Assistant:</strong> Hello! I’m here to help with your data analysis. How can I assist you today?</p>
+          </div>
+          <div id="chat-input-area">
+            <input type="text" id="userInput" placeholder="Type your question..." />
+            <button id="sendButton">Send</button>
+          </div>
+        </div>
+      </div>
+      
+          
+      
     <footer>
         <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
     </footer>
@@ -383,7 +498,77 @@
         animate();
         window.addEventListener('resize', resizeCanvas);
     </script>
-    
+    <script>
+        const botAvatar = document.getElementById('ai-bot-avatar');
+        const chatBox = document.getElementById('ai-chat-box');
+        
+        const responses = {
+        greetings: ["Hi there! 😊", "Hello! How's your day going?", "Hey! Great to hear from you!", "Hi! I’m here to help you out."],
+        how_are_you: ["I'm doing well, thanks for asking!", "I'm great! How about you?", "Feeling good today. Hope you are too!", "I'm awesome, and ready to assist!"],
+        thanks: ["You're very welcome!", "Anytime! 😊", "Glad I could help!", "No problem at all!"],
+        bye: ["Goodbye! See you soon!", "Take care! 👋", "Bye! Stay curious!", "Catch you later!"],
+        project_info: ["This project integrates AI into Data Analysis to automate insights!", "We're working on AI integration to provide powerful data analysis solutions soon!", "Soon this bot will help you deeply analyze data using AI!"],
+        acknowledgement: ["Okay!", "Got it!", "Alright!", "Noted!"],
+        default: ["This feature is still in development. 🚧 Soon, I’ll be able to help with everything!", "Hang tight! My full capabilities are on the way!", "That’s a great question! I’m still learning, stay tuned!", "More features are coming soon. Stay connected!"]
+        };
+        
+        function getIntent(message) {
+        const text = message.toLowerCase();
+        if (/^(hi|hello|hey|heyy|heyyy|yo)\b/.test(text)) return "greetings";
+        if (/how are you|how's it going/.test(text)) return "how_are_you";
+        if (/thank|thanks|thank you/.test(text)) return "thanks";
+        if (/bye|goodbye|see you/.test(text)) return "bye";
+        if (/project|this project|about/.test(text)) return "project_info";
+        if (/^(okay|ok|fine|alright|sure)\b/.test(text)) return "acknowledgement";
+        return "default";
+        }
+        
+        function getRandomResponse(category) {
+        const options = responses[category];
+        return options[Math.floor(Math.random() * options.length)];
+        }
+        
+        function sendMessage() {
+        const inputField = document.getElementById('userInput');
+        const chatMessages = document.getElementById('chat-messages');
+        const userMessage = inputField.value.trim();
+        if (!userMessage) return;
+        
+        chatMessages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+        inputField.value = "";
+        
+        const intent = getIntent(userMessage);
+        const botReply = getRandomResponse(intent);
+        
+        setTimeout(() => {
+            chatMessages.innerHTML += `<p><strong>AI:</strong> ${botReply}</p>`;
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }, 400);
+        }
+        
+        // Toggle and reset chat
+        botAvatar.addEventListener('click', () => {
+        if (chatBox.style.display === 'block') {
+            chatBox.style.display = 'none';
+            resetChat();
+        } else {
+            chatBox.style.display = 'block';
+        }
+        });
+        
+        function resetChat() {
+        document.getElementById('chat-messages').innerHTML = `<p><strong>AI Assistant:</strong> Hello! I’m here to help with your data analysis. How can I assist you today?</p>`;
+        document.getElementById('userInput').value = '';
+        }
+        
+        // Attach handlers after DOM is ready
+        window.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('sendButton').addEventListener('click', sendMessage);
+        document.getElementById('userInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+        });
+    </script>
 </body>
 </html>
 
