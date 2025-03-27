@@ -107,7 +107,7 @@
         width: 100px;
         height: 100px;
         z-index: 2;
-        pointer-events: none; /* Prevents blocking other interactions */
+        pointer-events: auto;
         }
 
         #globe {
@@ -305,8 +305,12 @@
     
         const NAME = 'yM oiloftroP';
         let rotation = 0;
-        const ROTATION_SPEED = -0.01; 
+        const ROTATION_SPEED = -0.01;
         const devicePixelRatio = window.devicePixelRatio || 1;
+    
+        let isDragging = false;
+        let lastX = 0;
+        let dragRotation = 0;
     
         function resizeCanvas() {
             const size = wrapper.clientWidth * devicePixelRatio;
@@ -319,13 +323,13 @@
     
         function generateNameSphere() {
             const points = [];
-            const layers = 8; 
+            const layers = 8;
             const chars = NAME.trim().split('');
             let index = 0;
     
             for (let latIndex = 0; latIndex < layers; latIndex++) {
-                const lat = -70 + (latIndex * 20); 
-                const charsInBand = chars.length + latIndex * 2; 
+                const lat = -70 + (latIndex * 20);
+                const charsInBand = chars.length + latIndex * 2;
                 for (let i = 0; i < charsInBand; i++) {
                     const lng = (i / charsInBand) * 360 - 180;
                     const char = chars[index % chars.length];
@@ -373,10 +377,52 @@
         }
     
         function animate() {
-            rotation += ROTATION_SPEED; 
+            rotation += isDragging ? 0 : ROTATION_SPEED;
+            rotation += dragRotation;
+            dragRotation *= 0.95; // apply damping
             draw(rotation);
             requestAnimationFrame(animate);
         }
+    
+        // --- Mouse interaction ---
+        canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastX = e.clientX;
+        });
+    
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaX = e.clientX - lastX;
+                dragRotation += deltaX * 0.005;
+                lastX = e.clientX;
+            }
+        });
+    
+        canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+    
+        canvas.addEventListener('mouseleave', () => {
+            isDragging = false;
+        });
+    
+        // --- Touch interaction ---
+        canvas.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            lastX = e.touches[0].clientX;
+        });
+    
+        canvas.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                const deltaX = e.touches[0].clientX - lastX;
+                dragRotation += deltaX * 0.005;
+                lastX = e.touches[0].clientX;
+            }
+        });
+    
+        canvas.addEventListener('touchend', () => {
+            isDragging = false;
+        });
     
         resizeCanvas();
         animate();
