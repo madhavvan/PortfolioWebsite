@@ -555,6 +555,8 @@
       
           chatMessages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
           inputField.value = "";
+          chatMessages.innerHTML += `<p><strong>AI:</strong> Thinking...</p>`;
+          chatMessages.scrollTop = chatMessages.scrollHeight;
       
           try {
             const response = await fetch(apiEndpoint, {
@@ -563,14 +565,20 @@
               body: JSON.stringify({ message: userMessage }),
             });
       
-            const data = await response.json();
-            if (data.reply) {
-              chatMessages.innerHTML += `<p><strong>AI:</strong> ${data.reply}</p>`;
-            } else {
-              chatMessages.innerHTML += `<p><strong>AI:</strong> Error: ${data.error}</p>`;
+            if (!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.status}`);
             }
+      
+            const data = await response.json();
+            chatMessages.innerHTML = chatMessages.innerHTML.replace(
+              `<p><strong>AI:</strong> Thinking...</p>`,
+              `<p><strong>AI:</strong> ${data.reply || "Error: ${data.error}"}</p>`
+            );
           } catch (error) {
-            chatMessages.innerHTML += `<p><strong>AI:</strong> Error: ${error.message}</p>`;
+            chatMessages.innerHTML = chatMessages.innerHTML.replace(
+              `<p><strong>AI:</strong> Thinking...</p>`,
+              `<p><strong>AI:</strong> Error: ${error.message}</p>`
+            );
           }
       
           chatMessages.scrollTop = chatMessages.scrollHeight;
