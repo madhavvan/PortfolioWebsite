@@ -545,72 +545,58 @@
     <script>
         const botAvatar = document.getElementById('ai-bot-avatar');
         const chatBox = document.getElementById('ai-chat-box');
-        
-        const responses = {
-            greetings: ["Hi there! 😊", "Hello! How's your day going?", "Hey! Great to hear from you!", "Hi! I’m here to help you out."],
-            how_are_you: ["I'm doing well, thanks for asking!", "I'm great! How about you?", "Feeling good today. Hope you are too!", "I'm awesome, and ready to assist!"],
-            thanks: ["You're very welcome!", "Anytime! 😊", "Glad I could help!", "No problem at all!"],
-            bye: ["Goodbye! See you soon!", "Take care! 👋", "Bye! Stay curious!", "Catch you later!"],
-            project_info: ["This project integrates AI into Data Analysis to automate insights!", "We're working on AI integration to provide powerful data analysis solutions soon!", "Soon this bot will help you deeply analyze data using AI!"],
-            acknowledgement: ["Okay!", "Got it!", "Alright!", "Noted!"],
-            default: ["This feature is still in development. 🚧 Soon, I’ll be able to help with everything!", "Hang tight! My full capabilities are on the way!", "That’s a great question! I’m still learning, stay tuned!", "More features are coming soon. Stay connected!"]
-        };
-        
-        function getIntent(message) {
-            const text = message.toLowerCase();
-            if (/^(hi|hello|hey|heyy|heyyy|yo)\b/.test(text)) return "greetings";
-            if (/how are you|how's it going/.test(text)) return "how_are_you";
-            if (/thank|thanks|thank you/.test(text)) return "thanks";
-            if (/bye|goodbye|see you/.test(text)) return "bye";
-            if (/project|this project|about/.test(text)) return "project_info";
-            if (/^(okay|ok|fine|alright|sure)\b/.test(text)) return "acknowledgement";
-            return "default";
-        }
-        
-        function getRandomResponse(category) {
-            const options = responses[category];
-            return options[Math.floor(Math.random() * options.length)];
-        }
-        
-        function sendMessage() {
-            const inputField = document.getElementById('userInput');
-            const chatMessages = document.getElementById('chat-messages');
-            const userMessage = inputField.value.trim();
-            if (!userMessage) return;
-            
-            chatMessages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
-            inputField.value = "";
-            
-            const intent = getIntent(userMessage);
-            const botReply = getRandomResponse(intent);
-            
-            setTimeout(() => {
-                chatMessages.innerHTML += `<p><strong>AI:</strong> ${botReply}</p>`;
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 400);
-        }
-        
-        botAvatar.addEventListener('click', () => {
-            if (chatBox.style.display === 'block') {
-                chatBox.style.display = 'none';
-                resetChat();
-            } else {
-                chatBox.style.display = 'block';
-            }
-        });
-        
-        function resetChat() {
-            document.getElementById('chat-messages').innerHTML = `<p><strong>AI Assistant:</strong> Hello! I’m here to help with your data analysis. How can I assist you today?</p>`;
-            document.getElementById('userInput').value = '';
-        }
-        
-        window.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('sendButton').addEventListener('click', sendMessage);
-            document.getElementById('userInput').addEventListener('keypress', function (e) {
-                if (e.key === 'Enter') sendMessage();
+        const apiEndpoint = "https://portfolio-website-1wkqe8ltzr-madhavvans-projects.vercel.app/api/chat";
+      
+        async function sendMessage() {
+          const inputField = document.getElementById('userInput');
+          const chatMessages = document.getElementById('chat-messages');
+          const userMessage = inputField.value.trim();
+          if (!userMessage) return;
+      
+          chatMessages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+          inputField.value = "";
+      
+          try {
+            const response = await fetch(apiEndpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ message: userMessage }),
             });
+      
+            const data = await response.json();
+            if (data.reply) {
+              chatMessages.innerHTML += `<p><strong>AI:</strong> ${data.reply}</p>`;
+            } else {
+              chatMessages.innerHTML += `<p><strong>AI:</strong> Error: ${data.error}</p>`;
+            }
+          } catch (error) {
+            chatMessages.innerHTML += `<p><strong>AI:</strong> Error: ${error.message}</p>`;
+          }
+      
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+      
+        botAvatar.addEventListener('click', () => {
+          if (chatBox.style.display === 'block') {
+            chatBox.style.display = 'none';
+            resetChat();
+          } else {
+            chatBox.style.display = 'block';
+          }
         });
-    </script>
+      
+        function resetChat() {
+          document.getElementById('chat-messages').innerHTML = `<p><strong>AI Assistant:</strong> Hello! I’m here to help with your data analysis. How can I assist you today?</p>`;
+          document.getElementById('userInput').value = '';
+        }
+      
+        window.addEventListener('DOMContentLoaded', () => {
+          document.getElementById('sendButton').addEventListener('click', sendMessage);
+          document.getElementById('userInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMessage();
+          });
+        });
+      </script>
     <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'92cc35cf48a29ab4',t:'MTc0NDA1NzA2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
