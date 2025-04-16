@@ -5,3 +5,10 @@
       "openai": "^4.0.0"
     }
   }
+
+  {
+    "error": "Failed to process request",
+    "details": "Invalid API key",
+    "status": 401,
+    "data": {"message": "Invalid API key"}
+  }
