@@ -545,7 +545,7 @@
     <script>
         const botAvatar = document.getElementById('ai-bot-avatar');
         const chatBox = document.getElementById('ai-chat-box');
-        const apiEndpoint = "https://portfolio-website-1wkqe8ltzr-madhavvans-projects.vercel.app/api/chat";
+        const apiEndpoint = "https://portfolio-website-kappa-five-40.vercel.app/api/chat";
       
         async function sendMessage() {
           const inputField = document.getElementById('userInput');
@@ -572,7 +572,7 @@
             const data = await response.json();
             chatMessages.innerHTML = chatMessages.innerHTML.replace(
               `<p><strong>AI:</strong> Thinking...</p>`,
-              `<p><strong>AI:</strong> ${data.reply || "Error: ${data.error}"}</p>`
+              `<p><strong>AI:</strong> ${data.reply || "Error: " + (data.error || "Unknown error")}</p>`
             );
           } catch (error) {
             chatMessages.innerHTML = chatMessages.innerHTML.replace(
