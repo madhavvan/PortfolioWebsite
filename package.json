@@ -1,8 +1,7 @@
 {
-    "name": "portfolio-website-api",
-    "version": "1.0.0",
-    "dependencies": {
-      "openai": "^4.0.0"
-    }
+  "name": "portfolio-website-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "openai": "^4.0.0"
   }
-
+}
