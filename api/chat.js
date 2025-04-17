@@ -3,14 +3,15 @@ const { Configuration, OpenAIApi } = require("openai");
 module.exports = async (req, res) => {
   try {
     const configuration = new Configuration({
-      apiKey: process.env.OPENAI_API_KEY,
+      apiKey: process.env.XAI_API_KEY,
+      basePath: "https://api.x.ai/v1",
     });
     const openai = new OpenAIApi(configuration);
 
     const { message } = req.body;
 
     const response = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
+      model: "grok-beta",
       messages: [{ role: "user", content: message }],
     });
 
