@@ -1,19 +1,29 @@
 const { Configuration, OpenAIApi } = require("openai");
 
 module.exports = async (req, res) => {
-    // Set CORS headers
-    res.setHeader("Access-Control-Allow-Origin", "https://madhavvan.github.io/PortfolioWebsite/");
+    // Log the incoming request for debugging
+    console.log("Incoming request:", req.method, req.headers.origin);
+
+    // Set CORS headers for all responses
+    res.setHeader("Access-Control-Allow-Origin", "https://madhavvan.github.io");
     res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
     // Handle preflight OPTIONS request
     if (req.method === "OPTIONS") {
+        console.log("Handling OPTIONS preflight request");
         return res.status(200).end();
     }
 
+    // Ensure the request is POST
+    if (req.method !== "POST") {
+        console.error("Invalid method:", req.method);
+        return res.status(405).json({ error: "Method not allowed" });
+    }
+
     try {
-        // Log request details for debugging
-        console.log("Received request:", req.method, req.body);
+        // Log request body for debugging
+        console.log("Received request body:", req.body);
 
         // Validate request body
         const { message } = req.body || {};
