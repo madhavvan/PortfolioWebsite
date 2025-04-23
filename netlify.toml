@@ -1,0 +1,9 @@
+[build]
+  command = "npm install" # Install dependencies for serverless functions
+  functions = "functions"  # Directory for serverless functions
+  publish = "."           # Directory to publish (root for GitHub Pages compatibility)
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

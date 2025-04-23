@@ -1,7 +1,11 @@
 {
-  "name": "portfolio-website-api",
+  "name": "portfolio",
   "version": "1.0.0",
+  "description": "Venu Madhav Pentala's Portfolio",
   "dependencies": {
     "openai": "^4.0.0"
+  },
+  "scripts": {
+    "start": "echo 'No start script needed for static site'"
   }
 }
