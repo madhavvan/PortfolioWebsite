@@ -291,7 +291,7 @@
         }
 
         #ai-bot-avatar {
-            background: #32CD32;
+            background: linear-gradient(45deg, #FFD700, #DAA520); /* Gold gradient for a luxe look */
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -299,12 +299,13 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         #ai-bot-avatar:hover {
             transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
         }
 
         #ai-bot-avatar i {
@@ -317,12 +318,13 @@
             position: absolute;
             bottom: 80px;
             right: 0;
-            width: 280px;
-            background: #fff;
+            width: 300px; /* Slightly wider for a more elegant feel */
+            background: linear-gradient(135deg, #1C2526, #2A3B47); /* Dark gradient for class */
             padding: 15px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            color: #1c2526;
+            border-radius: 16px; /* Softer corners */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            color: #E5E5EA; /* Light text for contrast */
+            border: 1px solid #FFD700; /* Gold border for a luxe touch */
         }
 
         #ai-chat-box input {
@@ -344,18 +346,18 @@
         #chat-input-area input {
             flex: 1;
             padding: 8px;
-            border: 1px solid #e5e5ea;
+            border: 1px solid #FFD700; /* Gold border */
             border-radius: 8px;
-            background: #f7f7f9;
-            color: #1c2526;
+            background: #3A3F47; /* Darker input background */
+            color: #E5E5EA;
         }
 
         #chat-input-area button {
             padding: 8px 12px;
-            background: linear-gradient(45deg, #32CD32, #28a745);
+            background: linear-gradient(45deg, #FFD700, #DAA520); /* Gold gradient */
             border: none;
             border-radius: 8px;
-            color: #fff;
+            color: #1C2526; /* Dark text for contrast */
             font-weight: bold;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
@@ -364,6 +366,9 @@
         #chat-input-area button:hover {
             background: #28a745;
             transform: scale(1.05);
+        }
+        #chat-messages p {
+            color: #E5E5EA;
         }
 
         #chat-messages {
@@ -417,7 +422,7 @@
                 </ol>
             </div>
 
-            <a href="https://madhavvan-ai-data-cleaner-app-djmiue.streamlit.app" target="_blank" class="ios-button">Try data toy AI now</a>
+            <a href="https:datatoyai.com" class="ios-button">Try data toy AI now</a>
         </div>
     </section>
 
@@ -556,7 +561,7 @@
             // Add user message to chat
             chatMessages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
             inputField.value = "";
-            chatMessages.innerHTML += `<p><strong>AI:</strong> Thinking...</p>`;
+            chatMessages.innerHTML += `<p><strong>DataToy AI:</strong> Thinking...</p>`;
             chatMessages.scrollTop = chatMessages.scrollHeight;
     
             try {
@@ -572,14 +577,14 @@
     
                 const data = await response.json();
                 chatMessages.innerHTML = chatMessages.innerHTML.replace(
-                    `<p><strong>AI:</strong> Thinking...</p>`,
-                    `<p><strong>AI:</strong> ${data.reply || "Error: " + (data.error || "Unknown error")}</p>`
+                    `<p><strong>DataToy AI:</strong> Thinking...</p>`,
+                    `<p><strong>DataToy AI:</strong> ${data.reply || "Error: " + (data.error || "Unknown error")}</p>`
                 );
             } catch (error) {
                 console.error("Fetch Error:", error.message);
                 chatMessages.innerHTML = chatMessages.innerHTML.replace(
-                    `<p><strong>AI:</strong> Thinking...</p>`,
-                    `<p><strong>AI:</strong> Failed to get response: ${error.message}. Please try again later.</p>`
+                    `<p><strong>DataToy AI:</strong> Thinking...</p>`,
+                    `<p><strong>DataToy AI:</strong> Failed to get response: ${error.message}. Please try again later.</p>`
                 );
             }
     
@@ -596,7 +601,7 @@
         });
     
         function resetChat() {
-            document.getElementById('chat-messages').innerHTML = `<p><strong>AI Assistant:</strong> Hello! I’m here to help with your data analysis. How can I assist you today?</p>`;
+            document.getElementById('chat-messages').innerHTML = `<p><strong>DataToy AI:</strong> Hello, darling! I’m DataToy AI, your chic data maestro. What numbers shall we unravel today?</p>`;
             document.getElementById('userInput').value = '';
         }
     

@@ -46,7 +46,7 @@ exports.handler = async function (event, context) {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o",
             messages: [
-                { role: "system", content: "You are a helpful AI assistant specializing in data analysis. Provide concise and accurate responses." },
+                { role: "system", content: "You’re DataToy AI, a high-class, witty AI specializing in data analysis. Focus on clear, sharp data insights with a cheeky, classy tone—under 100 tokens. If asked how DataToy AI works, explain generally: it’s a sleek tool to clean, analyze, visualize, and predict data with AI. No fluff, just brilliance." },
                 { role: "user", content: userMessage },
             ],
             max_tokens: 150,
