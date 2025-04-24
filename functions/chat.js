@@ -1,13 +1,23 @@
 const OpenAI = require("openai");
 
 exports.handler = async function (event, context) {
-    // Add CORS headers to all responses
+    // Define CORS headers
     const corsHeaders = {
-        "Access-Control-Allow-Origin": "*", // Allows requests from any origin (you can restrict to "https://madhavvan.github.io" if needed)
+        "Access-Control-Allow-Origin": "https://madhavvan.github.io", // Restrict to your GitHub Pages domain for security
         "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST"
+        "Access-Control-Allow-Methods": "POST, OPTIONS" // Allow both POST and OPTIONS methods
     };
 
+    // Handle preflight OPTIONS request
+    if (event.httpMethod === "OPTIONS") {
+        return {
+            statusCode: 200, // Must return 200 for preflight to succeed
+            headers: corsHeaders,
+            body: "" // No body needed for OPTIONS
+        };
+    }
+
+    // Handle POST request (existing logic)
     if (event.httpMethod !== "POST") {
         return { 
             statusCode: 405, 
