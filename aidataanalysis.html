@@ -148,7 +148,7 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 251, 0.8);
             border-radius: 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
@@ -204,6 +204,12 @@
             font-weight: 500;
         }
 
+        .ios-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
         .ios-table {
             width: 100%;
             border-collapse: collapse;
@@ -214,9 +220,10 @@
         }
 
         .ios-table th, .ios-table td {
-            padding: 12px;
+            padding: 8px;
             text-align: left;
             border-bottom: 1px solid #e5e5ea;
+            font-size: 0.9em;
         }
 
         .ios-table th {
@@ -291,7 +298,7 @@
         }
 
         #ai-bot-avatar {
-            background: linear-gradient(45deg, #FFD700, #DAA520); /* Gold gradient for a luxe look */
+            background: linear-gradient(45deg, #FFD700, #DAA520);
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -299,13 +306,13 @@
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         #ai-bot-avatar:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
         }
 
         #ai-bot-avatar i {
@@ -318,13 +325,13 @@
             position: absolute;
             bottom: 80px;
             right: 0;
-            width: 300px; /* Slightly wider for a more elegant feel */
-            background: linear-gradient(135deg, #1C2526, #2A3B47); /* Dark gradient for class */
+            width: 300px;
+            background: linear-gradient(135deg, #1C2526, #2A3B47);
             padding: 15px;
-            border-radius: 16px; /* Softer corners */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow */
-            color: #E5E5EA; /* Light text for contrast */
-            border: 1px solid #FFD700; /* Gold border for a luxe touch */
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            color: #E5E5EA;
+            border: 1px solid #FFD700;
         }
 
         #ai-chat-box input {
@@ -346,18 +353,18 @@
         #chat-input-area input {
             flex: 1;
             padding: 8px;
-            border: 1px solid #FFD700; /* Gold border */
+            border: 1px solid #FFD700;
             border-radius: 8px;
-            background: #3A3F47; /* Darker input background */
+            background: #3A3F47;
             color: #E5E5EA;
         }
 
         #chat-input-area button {
             padding: 8px 12px;
-            background: linear-gradient(45deg, #FFD700, #DAA520); /* Gold gradient */
+            background: linear-gradient(45deg, #FFD700, #DAA520);
             border: none;
             border-radius: 8px;
-            color: #1C2526; /* Dark text for contrast */
+            color: #1C2526;
             font-weight: bold;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s ease;
@@ -367,6 +374,7 @@
             background: #28a745;
             transform: scale(1.05);
         }
+
         #chat-messages p {
             color: #E5E5EA;
         }
@@ -375,6 +383,32 @@
             max-height: 200px;
             overflow-y: auto;
             padding-right: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .ios-container {
+                max-width: 100%;
+                padding: 10px;
+            }
+
+            .ios-card {
+                padding: 15px;
+                margin: 10px 0;
+            }
+
+            .ios-container h2 {
+                font-size: 1.5em;
+            }
+
+            .ios-container p, .ios-container ul, .ios-container ol {
+                font-size: 1em;
+            }
+
+            #ai-chat-box {
+                width: 90%;
+                max-width: 300px;
+                right: 5%;
+            }
         }
     </style>
 </head>
@@ -422,7 +456,7 @@
                 </ol>
             </div>
 
-            <a href="https:datatoyai.com" class="ios-button">Try data toy AI now</a>
+            <a href="https://datatoyai.com" class="ios-button">Try data toy AI now</a>
         </div>
     </section>
 
@@ -433,27 +467,29 @@
 
             <div class="ios-card">
                 <h3>Raw Data</h3>
-                <table class="ios-table">
-                    <thead>
-                        <tr>
-                            <th>Age</th>
-                            <th>Sex</th>
-                            <th>On Thyroxine</th>
-                            <th>Query on Thyroxine</th>
-                            <th>Antithyroid Med</th>
-                            <th>Sick</th>
-                            <th>Pregnant</th>
-                            <th>Thyroid Surgery</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>59</td><td>F</td><td>t</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
-                        <tr><td>54</td><td>M</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
-                        <tr><td>41</td><td>F</td><td>t</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
-                        <tr><td>27</td><td>F</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
-                        <tr><td>34</td><td>F</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
-                    </tbody>
-                </table>
+                <div class="ios-table-wrapper">
+                    <table class="ios-table">
+                        <thead>
+                            <tr>
+                                <th>Age</th>
+                                <th>Sex</th>
+                                <th>On Thyroxine</th>
+                                <th>Query on Thyroxine</th>
+                                <th>Antithyroid Med</th>
+                                <th>Sick</th>
+                                <th>Pregnant</th>
+                                <th>Thyroid Surgery</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>59</td><td>F</td><td>t</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
+                            <tr><td>54</td><td>M</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
+                            <tr><td>41</td><td>F</td><td>t</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
+                            <tr><td>27</td><td>F</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
+                            <tr><td>34</td><td>F</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td><td>f</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="ios-card">
@@ -468,28 +504,30 @@
 
             <div class="ios-card">
                 <h3>Cleaned Data</h3>
-                <table class="ios-table">
-                    <thead>
-                        <tr>
-                            <th>On</th>
-                            <th>Sick</th>
-                            <th>Pregnant</th>
-                            <th>Thyroid Surgery</th>
-                            <th>I131 Treatment</th>
-                            <th>Query Hypo</th>
-                            <th>Query Hyper</th>
-                            <th>Lithium</th>
-                            <th>Goitre</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                    </tbody>
-                </table>
+                <div class="ios-table-wrapper">
+                    <table class="ios-table">
+                        <thead>
+                            <tr>
+                                <th>On</th>
+                                <th>Sick</th>
+                                <th>Pregnant</th>
+                                <th>Thyroid Surgery</th>
+                                <th>I131 Treatment</th>
+                                <th>Query Hypo</th>
+                                <th>Query Hyper</th>
+                                <th>Lithium</th>
+                                <th>Goitre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="ios-card">
@@ -539,10 +577,8 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 Venu Madhav Pentala. All rights reserved.</p>
+        <p>© 2025 Venu Madhav Pentala. All rights reserved.</p>
     </footer>
-
-    
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -558,7 +594,6 @@
             const userMessage = inputField.value.trim();
             if (!userMessage) return;
     
-            // Add user message to chat
             chatMessages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
             inputField.value = "";
             chatMessages.innerHTML += `<p><strong>DataToy AI:</strong> Thinking...</p>`;
@@ -612,5 +647,6 @@
             });
         });
     </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9352e918bd17bd2a',t:'MTc0NTQ2OTUwMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
