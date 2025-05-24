@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <title>Healthcare Data Integration using ETL</title>
-    <style>
-         body {
+    <title>Pediatric Asthma Decision Support - Venu Madhav Pentala</title>
+<style>
+        body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
@@ -18,13 +17,14 @@
         }
         header {
             position: relative;
-            background: #06080a;
+            background: #06080a; /* Dark background for header */
             padding: 20px;
             text-align: center;
+            z-index: 10; /* Ensure header content is above other elements if needed */
         }
-        header h1 {
+        header h1.name-highlight { /* Made selector more specific */
             margin: 0;
-            font-size: 2.5rem;
+            font-size: 2.5rem; /* Original size, ensure it's readable */
         }
         .profile-pic-container {
             position: absolute;
@@ -67,17 +67,19 @@
         nav a.active::after {
             width: 100%; /* Full underline on hover or active */
         }
+
+        /* Styles for sections in general - kept from original for potential other sections */
         section {
             margin: 20px auto;
             padding: 20px;
             max-width: 900px;
-            background: #68819a;
+            background: #68819a; /* Default background for generic sections */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: center; /* Center-align all content */
         }
-        .container {
-            text-align: center; /* Center-align the container content */
+        .container { /* Generic container, if used */
+            text-align: center;
         }
         .visuals {
             display: flex;
@@ -99,16 +101,22 @@
             font-weight: bold;
             border-radius: 5px;
             margin-top: 20px;
+            transition: background-color 0.3s ease; /* Smooth transition for button hover */
         }
         .button:hover {
             background-color: #28a428;
         }
-        h2, h3, h1 {
-            color: #fbffff;
+
+        /* General heading styles - applied to h1, h2, h3 (global) */
+        h1, h2, h3 { /* Global h1, h2, h3 color, can be overridden by specific classes */
+            color: #fbffff; /* Light color for headings on dark backgrounds */
             text-align: center;
         }
+
         ul {
-            padding-left: 20px;
+            padding-left: 20px; /* Default padding for lists */
+            list-style-position: inside; /* Ensures markers are within the text block */
+            text-align: left; /* Align list text to the left for readability */
         }
         li {
             margin-bottom: 10px;
@@ -117,139 +125,603 @@
             background: #187a6513;
             padding: 2px 5px;
             border-radius: 4px;
-            color: #c7254e;
+            color: #c7254e; /* Consider a lighter color if on very dark backgrounds */
         }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #224b77;
-            color: #fff;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-        .glow-effect {
+
+        .glow-effect { /* Defined, can be applied to elements */
             text-shadow: 0 0 8px rgba(0, 198, 255, 0.7), 0 0 16px rgba(0, 198, 255, 0.7);
         }
-        .highlight {
+        .highlight { /* Defined, can be applied to elements */
             color: #00c6ff;
             font-weight: bold;
         }
-        .fade-in {
-            animation: fadeIn 2s;
+        .fade-in { /* General fade-in animation */
+            animation: fadeInGeneral 2s ease-out; /* Renamed to avoid conflict if script.js also defines 'fadeIn' */
         }
         .name-highlight {
-            font-size: 2.5em;
+            font-size: 2.5em; /* As per original */
             font-weight: bold;
             background: linear-gradient(to right, #bfafd3, #b793c6, #cdb0ba, #b7adad);
             -webkit-background-clip: text;
+            background-clip: text; /* Standard property */
             -webkit-text-fill-color: transparent;
+            text-fill-color: transparent; /* Standard property */
             text-align: center;
             margin: 0;
-            padding: 20px;
+            padding: 10px 0; /* Adjusted padding slightly */
         }
-        @keyframes fadeIn {
+
+        @keyframes fadeInGeneral { /* Renamed from fadeIn to avoid potential global conflicts */
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         .social-icons a {
             margin: 0 10px;
             color: #fff;
             text-decoration: none;
             font-size: 1.5em;
+            transition: color 0.3s ease, transform 0.3s ease; /* Added transform transition */
         }
         .social-icons a:hover {
-            color: #000000;
+            color: #00c6ff; /* Brighter color on hover */
+            transform: scale(1.1); /* Slight scale effect on hover */
         }
+
         #globe-wrapper {
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        width: 100px;
-        height: 100px;
-        z-index: 2;
-        pointer-events: auto;
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 100px; /* Adjust as needed */
+            height: 100px; /* Adjust as needed */
+            z-index: 2; /* Above header background, below profile pic if overlapping */
+            pointer-events: auto; /* Allow interaction if globe is interactive */
         }
 
-        #globe {
-        width: 100%;
-        height: 100%;
+        /* Canvas for globe - ensure this is NOT for cursor particles */
+        #globe { 
+            width: 100%;
+            height: 100%;
+            /* animation: spinGlobe 20s linear infinite; CSS animation for the globe if JS is not controlling it */
         }
-
-
 
 
         @keyframes spinGlobe {
-        from {
-            transform: rotateX(20deg) rotateY(0deg);
+            from {
+                transform: rotateX(20deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(20deg) rotateY(360deg);
+            }
         }
-        to {
-            transform: rotateX(20deg) rotateY(360deg);
+
+        @keyframes rainbowGlow { /* Defined, can be used */
+            0%   { color: red; }
+            10%  { color: orange; }
+            20%  { color: yellow; }
+            30%  { color: green; }
+            40%  { color: cyan; }
+            50%  { color: blue; }
+            60%  { color: indigo; }
+            70%  { color: violet; }
+            80%  { color: pink; }
+            90%  { color: white; }
+            100% { color: red; }
         }
+
+        /* Mind Blowing Content Section Styles */
+        .mind-blowing-content {
+            position: relative; /* For z-index and ::before pseudo-element */
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #000000, #070f1c); /* Specific background for this section */
+            color: #fff;
+            overflow: hidden; /* Contains pseudo-elements and margins */
+            z-index: 1; /* Stacking context */
+            margin-top: 0; /* Ensure it connects with header or body as intended */
+        }
+
+        .mind-blowing-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10"><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.2)"/></svg>') repeat;
+            animation: particle-drift 20s linear infinite;
+            z-index: -1; /* Behind the content */
+        }
+
+        @keyframes particle-drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100px, 100px); } /* Particle movement */
+        }
+
+        .mind-blowing-content h1 {
+            font-size: 3rem;
+            text-align: center;
+            background: linear-gradient(90deg, #00ddeb, #ff6f91);
+            -webkit-background-clip: text;
+            background-clip: text; /* Standard property */
+            color: transparent; /* Hides the original text color, showing gradient */
+            -webkit-text-fill-color: transparent; /* For WebKit browsers */
+            text-fill-color: transparent; /* Standard property */
+            text-shadow: 0 0 10px rgba(0, 221, 235, 0.5);
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .mind-blowing-content h2 {
+            font-size: 2rem;
+            text-align: center;
+            color: #e0f7fa; /* Light cyan tone */
+            text-shadow: 0 0 5px rgba(0, 188, 212, 0.7);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: backwards; /* Starts in animated state if needed */
+        }
+
+        .mind-blowing-content h3 {
+            font-size: 1.5rem;
+            color: #b3e5fc; /* Lighter blue tone */
+            margin: 2rem 0 0.5rem;
+            position: relative;
+            padding-left: 1rem;
+            border-left: 4px solid #00ddeb; /* Accent border */
+            transition: transform 0.3s ease, color 0.3s ease;
+            text-align: left; /* Align heading text to left for readability */
+        }
+
+        .mind-blowing-content h3:hover {
+            transform: translateX(10px); /* Slight shift on hover */
+            color: #ff6f91; /* Change color on hover */
+        }
+
+        .mind-blowing-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0f7fa; /* Consistent light text color */
+            background: rgba(0, 0, 0, 0.2); /* Subtle dark background for readability */
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeInContent 1.5s ease-out; /* Renamed for clarity */
+            text-align: left; /* Align paragraph text to left */
+        }
+
+        .mind-blowing-content p:hover {
+            transform: scale(1.02); /* Slight zoom on hover */
+            box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5); /* Enhanced shadow on hover */
+        }
+
+        .content-card {
+            max-width: 800px; /* Max width for content cards */
+            margin: 0 auto 2rem; /* Centering and spacing */
+            perspective: 1000px; /* For 3D effect on children */
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(50px); /* Initial state for animation */
+            animation: slideIn 1s ease-out forwards; /* Scroll-triggered animation */
+        }
+
+        /* Staggered animation delays for content cards */
+        .content-card:nth-child(1) { animation-delay: 0s; }
+        .content-card:nth-child(2) { animation-delay: 0.2s; }
+        .content-card:nth-child(3) { animation-delay: 0.4s; }
+        .content-card:nth-child(4) { animation-delay: 0.6s; }
+        .content-card:nth-child(5) { animation-delay: 0.8s; }
+        .content-card:nth-child(6) { animation-delay: 1s; }
+        .content-card:nth-child(7) { animation-delay: 1.2s; }
+        .content-card:nth-child(8) { animation-delay: 1.4s; }
+
+        .content-card-inner { /* Make sure this is not 'qcontent-card-inner' if that was a typo */
+            transform-style: preserve-3d; /* Enables 3D transformations */
+            transition: transform 0.5s ease;
+            background: rgba(255, 255, 255, 0.05); /* Slight inner background for card if needed */
+            border-radius: 10px; /* Match paragraph radius if paragraphs are the sole content */
+            padding: 0.1px; /* Fixes margin collapse issue if first/last child has margin */
+        }
+         /* Fixing potential typo for image showcase cards if qcontent-card-inner was used there */
+        .content-card.image-showcase-card .content-card-inner {
+             padding: 1.5rem; /* Ensure consistent padding for image cards, overriding 0.1px */
         }
 
 
-        @keyframes rainbowGlow {
-        0%   { color: red; }
-        10%  { color: orange; }
-        20%  { color: yellow; }
-        30%  { color: green; }
-        40%  { color: cyan; }
-        50%  { color: blue; }
-        60%  { color: indigo; }
-        70%  { color: violet; }
-        80%  { color: pink; }
-        90%  { color: white; }
-        100% { color: red; }
+        .content-card:hover .content-card-inner {
+            transform: rotateY(10deg) rotateX(5deg) scale(1.01); /* Enhanced hover effect */
         }
-    </style>
+
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInContent { /* Renamed from generic fadeIn */
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Footer Styles with Magic Bubbles Effect */
+        footer {
+            text-align: center;
+            padding: 20px 10px;
+            background: linear-gradient(135deg, #0a2a3a, #4a1a4a); /* Gradient background */
+            color: #fff;
+            margin-top: 0;
+            font-size: 0.9rem;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 221, 235, 0.5); /* Neon glow */
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 111, 145, 0.2) 0%, transparent 70%);
+            animation: pulseOverlay 8s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes pulseOverlay {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 0.4; }
+        }
+
+        footer h2 {
+            color: #ffd700; /* Gold color */
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.7); /* Neon glow */
+        }
+
+        footer p {
+            color: #ffd700; /* Gold for copyright text */
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+        }
+
+        .social-icons a { /* Ensure existing social icon styles are not overridden by mistake */
+            margin: 0 10px;
+            color: #fff; /* Original color from your general .social-icons a */
+            text-decoration: none;
+            font-size: 1.8em; /* Larger icons from your footer specific styles */
+            transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+            position: relative;
+            text-shadow: 0 0 5px rgba(0, 221, 235, 0.5); /* From your footer specific styles */
+        }
+
+        .social-icons a:hover {
+            color: #ffd700; /* Gold on hover - from your footer specific styles */
+            transform: scale(1.2); /* Scale effect - from your footer specific styles */
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.7); /* Enhanced glow - from your footer specific styles */
+        }
+
+        .social-icons a::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 221, 235, 0.5) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-icons a:hover::after {
+            opacity: 1; /* Magic bubbles particle burst effect */
+        }
+
+        /* CSS for the Image Showcase Section */
+        .showcase-intro-card h2 {
+            color: #ff6f91; /* A highlight color for the showcase title */
+            font-size: 2.2rem; /* Slightly larger for section title */
+            margin-bottom: 1rem;
+        }
+
+        .image-showcase-card h3 {
+            text-align: center;
+            margin-top: 0.5rem; /* Adjusted margin for step titles inside cards */
+            margin-bottom: 1rem;
+            color: #00ddeb; /* Using an existing highlight color */
+            font-size: 1.6rem; /* Size for step titles */
+        }
+
+        .image-showcase-card h4 { /* For sub-steps or details */
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #b3e5fc;
+            font-size: 1.2rem;
+        }
+
+        .showcase-image {
+            max-width: 100%; 
+            height: auto;    
+            border-radius: 8px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.4); 
+            display: block; 
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid rgba(255,255,255,0.1); 
+        }
+
+        .caption {
+            font-size: 1rem; 
+            color: #e0f7fa; 
+            margin-top: 0.5rem;
+            margin-bottom: 1rem; 
+            padding: 0 1rem;
+            text-align: justify; 
+            line-height: 1.7;
+        }
+
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 768px) {
+            header h1.name-highlight {
+                font-size: 2rem; /* Adjust for smaller screens */
+            }
+            nav {
+                flex-direction: column; /* Stack nav items on smaller screens */
+                gap: 10px;
+            }
+            nav a {
+                font-size: 1.1em;
+                margin: 0 5px; /* Adjust margin */
+            }
+            .mind-blowing-content {
+                padding: 2rem 1rem; /* Reduce padding on smaller screens */
+            }
+            .mind-blowing-content h1 {
+                font-size: 2rem;
+            }
+            .mind-blowing-content h2 {
+                font-size: 1.5rem;
+            }
+            .mind-blowing-content h3 { /* General h3 in mind-blowing content */
+                font-size: 1.2rem;
+            }
+            .mind-blowing-content p { /* General p in mind-blowing content */
+                font-size: 1rem;
+                padding: 1rem;
+            }
+            .profile-pic-container { /* Adjust profile pic for smaller headers */
+                top: 5px;
+                right: 5px;
+            }
+            .profile-pic {
+                width: 50px;
+                height: 50px;
+            }
+             /* Globe wrapper responsive adjustment - ADDED as it was missing from provided base */
+            #globe-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+
+            /* Responsive adjustments for showcase section */
+            .showcase-intro-card h2 {
+                font-size: 1.8rem;
+            }
+            .image-showcase-card h3 { /* h3 specifically within image showcase cards */
+                font-size: 1.4rem;
+            }
+            .caption { /* Captions specifically within showcase */
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Optional: Further fine-tuning for very small screens */
+        @media (max-width: 480px) {
+            .showcase-image {
+                max-width: 95%; /* Slightly reduce the max-width on smaller screens if needed */
+            }
+            .caption {
+                padding: 0 0.5rem; /* Reduce caption padding on very small screens */
+            }
+            .mind-blowing-content { /* Reduce padding even more on very small screens */
+                padding: 1.5rem 0.5rem;
+            }
+            header h1.name-highlight {
+                font-size: 1.8rem;
+            }
+        }
+
+</style>
 </head>
 <body>
     <header>
         <div id="globe-wrapper">
             <canvas id="globe"></canvas>
-          </div>
+        </div>
         <h1 class="name-highlight">Venu Madhav Pentala</h1>
+        <nav>
+            <a href="index.html#about">About Me</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="profile-pic-container">
+            <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
+        </div>
     </header>
-    <nav>
-        <a href="index.html#about">About Me</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="profile-pic-container">
-        <img id="profilePicture" src="images/profilepic.jpg" alt="Venu Madhav Pentala" class="profile-pic">
-    </div>
-</body>
-</html>
-    <h1>Design, Implementation, and Evaluation of EHR</h1>
-    <h2>Transforming Healthcare Through Effective EHR Systems</h2>
-    
-    <h3> 
-        posted soon !
-    </h3>
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-        <footer>
-            <h2>Contact Me</h2>
-            <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
-            <div class="social-icons">
+    <main class="mind-blowing-content">
+        <h1>Integrating Pediatric Asthma Decision Support into OpenMRS</h1>
+        <h2>Transforming Pediatric Asthma Care with Evidence-Based Tools</h2>
+
+        <div class="content-card">
+            <div class="content-card-inner">
+                <p>Asthma affects approximately 6 million children in the U.S., making it the most common chronic pediatric disease. This project integrates the Pediatric Asthma Severity Score (PASS) into OpenMRS to provide real-time decision support, standardizing treatment and improving outcomes for pediatric asthma patients.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="content-card-inner">
+                <h3>Introduction</h3>
+                <p>Pediatric asthma leads to frequent emergency visits and hospitalizations due to exacerbations. The PASS, a validated tool assessing wheezing, prolonged expiration, and work of breathing, guides treatment but is not yet integrated into OpenMRS. This project develops a PASS-based decision-support module to enhance clinical workflows and patient care.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="content-card-inner">
+                <h3>Purpose</h3>
+                <p>The project addresses the lack of structured decision support for pediatric asthma in OpenMRS. By automating PASS calculations, it aims to standardize severity assessments, improve treatment accuracy, and reduce hospital admissions.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="content-card-inner">
+                <h3>Aim</h3>
+                <p>To develop a real-time PASS calculator within OpenMRS, querying eligible patients and providing evidence-based treatment recommendations based on Global Initiative for Asthma (GINA) guidelines, enhancing workflow efficiency and patient outcomes.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="content-card-inner">
+                <h3>Scope</h3>
+                <p>The module will automate PASS scoring, provide real-time clinical recommendations, enhance OpenMRS UI and database, and ensure secure data handling. It includes evaluating OpenMRS API for real-time functionality and developing custom APIs if needed.</p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="content-card-inner">
+                <h3>Objectives</h3>
+                <p>
+                    - <strong>Weeks 1-2:</strong> Conduct requirement analysis via literature review and clinician feedback.<br>
+                    - <strong>Weeks 3-4:</strong> Design UI mockups and database schema for PASS integration.<br>
+                    - <strong>Weeks 5-8:</strong> Develop the module with 90% PASS scoring accuracy and integrate medication order sets.<br>
+                    - <strong>Weeks 9-10:</strong> Test functionality and usability with clinicians, targeting 90% success rate.<br>
+                    - <strong>Weeks 11-12:</strong> Deploy in a simulated environment, evaluate performance, and ensure data security compliance.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="content-card-inner">
+                <h3>Timeline</h3>
+                <p>
+                    - <strong>Weeks 1-2:</strong> Requirement Analysis (Emerson, Venu, Shivani)<br>
+                    - <strong>Weeks 3-4:</strong> UI/UX Design (Shivani, Venu, Emerson)<br>
+                    - <strong>Weeks 5-8:</strong> Database & Backend (Emerson), Decision Rules (Venu)<br>
+                    - <strong>Weeks 9-10:</strong> Testing & Validation (Emerson, Venu, Shivani)<br>
+                    - <strong>Weeks 11-12:</strong> Deployment & Evaluation (Emerson, Venu, Shivani)
+                </p>
+            </div>
+        </div>
+
+        <div class="content-card">
+            <div class="content-card-inner">
+                <h3>Conclusion</h3>
+                <p>This project enhances OpenMRS with a pediatric asthma decision-support system, automating PASS calculations and providing real-time recommendations. It aims to reduce hospitalizations, improve workflow efficiency, and enhance patient outcomes through standardized care.</p>
+            </div>
+        </div>
+
+        <div class="content-card showcase-intro-card" id="application-showcase">
+            <div class="content-card-inner">
+                <h2>Project in Action: The AsthmaCare Tool</h2>
+                <p class="caption" style="text-align: center; font-size: 1.1rem; padding: 0.5rem 0;">The following screenshots walk through the key functionalities of the Pediatric Asthma Management tool (AsthmaCare), demonstrating the workflow from patient lookup to treatment recommendations and reassessments, as outlined in this project.</p>
+            </div>
+        </div>
+
+        <div class="content-card image-showcase-card">
+            <div class="qcontent-card-inner"> {/* Corrected potential typo from qcontent-card-inner */}
+                <h3>Step 1: AsthmaCare Dashboard</h3>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-05-04 134020.png" alt="AsthmaCare Dashboard" class="showcase-image">
+                <p class="caption">The application opens to the AsthmaCare Dashboard. This central hub provides a welcome message and a quick guide to using the tool. Key navigation options such as Patient Lookup, PASS Calculator, and Reassessments are conveniently accessible from the sidebar, allowing clinicians to easily move between different modules of the application.</p>
+            </div>
+        </div>
+
+        <div class="content-card image-showcase-card">
+            <div class="qcontent-card-inner"> {/* Corrected potential typo from qcontent-card-inner */}
+                <h3>Step 2: Patient Lookup and Selection</h3>
+                <h4>Initial Lookup Interface</h4>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-04-30 160810.png" alt="Patient Lookup with ID entry" class="showcase-image">
+                <p class="caption">The workflow typically begins with the "Patient Lookup" feature. Clinicians can enter a patient identifier (e.g., "1000f9") to search for and retrieve specific patient records. Once a patient is found, basic demographic information such as Name, Date-of-Birth, and Age is displayed. An essential field for inputting or overriding the patient's weight (in kg) is also provided, which is critical for accurate, weight-based treatment calculations.</p>
+                
+                <h4>Successful Patient Search</h4>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-05-04 134123.png" alt="Patient Lookup with search result for Peppa Pig" class="showcase-image">
+                <p class="caption">This image demonstrates a successful patient search using a name (e.g., "peppa"). The system has found "Peppa Pig," displaying her Date of Birth (DOB) and current age (15 years). The interface then prompts the clinician to enter the patient's current weight, reinforcing that this information is required before proceeding with the PASS assessment and treatment calculations.</p>
+            </div>
+        </div>
+
+        <div class="content-card image-showcase-card">
+            <div class="qcontent-card-inner"> {/* Corrected potential typo from qcontent-card-inner */}
+                <h3>Step 3: PASS Calculator - Data Entry</h3>
+                <h4>Clinical Parameters Input</h4>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-05-04 134214.png" alt="PASS Calculator - Clinical parameters entry" class="showcase-image">
+                <p class="caption">After selecting a patient, the clinician navigates to the PASS (Pediatric Asthma Severity Score) Calculator. This section is crucial for inputting observed clinical parameters for the patient, such as "Peppa Pig" in this example. Fields include Respiratory Rate (with age-based normal values provided for reference), Breath Sounds/Dyspnea, observed Wheezing, Accessory Muscle Use, and current Oxygen Saturation levels.</p>
+                
+                <h4>Patient-Reported Outcomes (Optional)</h4>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-05-04 134258.png" alt="PASS Calculator - Patient-reported outcomes entry" class="showcase-image">
+                <p class="caption">The PASS Calculator also includes an optional section for Patient-Reported Outcomes (PROs). This allows for a more comprehensive assessment by capturing the patient's recent experiences, such as the number of asthma attacks in the past week, severity of night-time symptoms, frequency of rescue inhaler use, any hospitalizations for asthma in the past year, and suspected allergens or triggers. Once all relevant information is entered, the clinician clicks the "Calculate Score" button to proceed.</p>
+            </div>
+        </div>
+
+        <div class="content-card image-showcase-card">
+            <div class="qcontent-card-inner"> {/* Corrected potential typo from qcontent-card-inner */}
+                <h3>Step 4: Reviewing PASS Results & Treatment Recommendations</h3>
+                <h4>Calculated PASS Score and Severity</h4>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-05-04 134320.png" alt="PASS Results display" class="showcase-image">
+                <p class="caption">Upon calculation, the system presents the PASS Results. This includes the calculated PASS Score (e.g., 9 out of 15) and the corresponding asthma severity level (e.g., "Moderate Asthma Exacerbation"). A summary of the entered Patient-Reported Outcomes is also displayed for a quick overview. The clinician can then choose to "Show Initial Treatment Plan."</p>
+                
+                <h4>Initial Treatment Recommendation Details</h4>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-05-04 134339.png" alt="Initial Treatment Recommendation details" class="showcase-image">
+                <p class="caption">The Initial Treatment Recommendation section outlines the evidence-based treatment plan. This includes specific medication orders (e.g., Albuterol Nebulization, Ipratropium Nebulization, and Oral Steroids with dosages adjusted for weight if applicable). Important comments, such as the need for continuous cardiac and SpO2 monitoring, are provided. The "Next Step" clearly indicates that a reassessment is required after administering the initial treatment (e.g., "Reassess in 15-30 minutes"). A "Clinician Override" section is thoughtfully included, allowing practitioners to document their reasoning if their clinical judgment leads to a deviation from the proposed plan.</p>
+            </div>
+        </div>
+
+        <div class="content-card image-showcase-card">
+            <div class="qcontent-card-inner"> {/* Corrected potential typo from qcontent-card-inner */}
+                <h3>Step 5: Reassessment Workflow</h3>
+                <h4>Reassessment Data Entry</h4>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-05-04 134415.png" alt="Reassessment input screen for Peppa Pig" class="showcase-image">
+                <p class="caption">Following the initial treatment, the system guides the clinician to the Reassessment phase. This example shows the "15–30 Minute Reassessment" screen for "Peppa Pig." Similar to the initial PASS calculator, this module requires the input of updated clinical parameters, including current Respiratory Rate (with selection tailored for the patient's age), Breath Sounds/Dyspnea, Wheezing, Accessory Muscle Use, and Oxygen Saturation levels. This allows for tracking changes in the patient's condition.</p>
+                
+                <h4>Reassessment Results and Updated Action Plan</h4>
+                <img src="c:\Users\penta\OneDrive - Indiana University\MY PROJECTS\PortfolioWebsite\PortfolioWebsite\images\Screenshot 2025-05-04 134514.png" alt="Reassessment results and recommended action plan" class="showcase-image">
+                <p class="caption">After the reassessment data is submitted and calculated, the system displays the "15-30 Min Reassessment Results." This includes the new Reassessment PASS Score (e.g., 6/15) and the updated severity (e.g., "Mild Asthma Exacerbation"). Based on this new score, a "Recommended Action/Plan" is provided. For instance, if significant improvement is noted, the plan might suggest an observation period (e.g., 1-2 hours), and if the patient remains stable, to plan for discharge with an appropriate home management plan (including Asthma Action Plan, MDI + spacer technique review, and steroid course completion if started).</p>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out to me for collaborations, queries, or just to say hello.</p>
+        <div class="social-icons">
             <a href="https://www.linkedin.com/in/venu-madhav-pentala-8951092ab/" target="_blank" aria-label="LinkedIn">
                 <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/madhavvan" target="_blank" aria-label="GitHub"> <i class="fab fa-github"></i>
             </a>
             <a href="https://mail.google.com/mail/?view=cm&to=pentalavenumadhav@gmail.com" target="_blank" aria-label="Email">
                 <i class="fas fa-envelope"></i>
             </a>
-            
             <a href="https://www.facebook.com/share/19wK6P7CDs/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
                 <i class="fab fa-facebook"></i>
             </a>
             <a href="https://x.com/madhavvan41916?s=21" target="_blank" aria-label="X (Twitter)">
                 <i class="fab fa-x-twitter"></i>
             </a>
-
         </div>
-        &copy; 2025 Venu Madhav Pentala. All Rights Reserved. Designed by Venu Madhav Pentala | Powered by Passion for Innovation
-        </footer>
-        <script src="script.js"></script>
+        <p>© 2025 Venu Madhav Pentala. All Rights Reserved. Designed by Venu Madhav Pentala | Powered by Passion for Innovation</p>
+    </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
