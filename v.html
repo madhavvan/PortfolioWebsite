@@ -278,6 +278,34 @@
             text-align: center;
             margin-top: 30px;
         }
+        /* --- World-Class Style for the Mantra Block --- */
+        .mantra-block {
+            position: relative; /* Needed for the decorative quote mark */
+            background: linear-gradient(135deg, #f5f7fa, #eef2f3); /* Subtle, elegant gradient */
+            color: #34495e; /* A softer, professional dark blue-grey */
+            font-size: 1.2em;   /* Makes the text slightly larger */
+            font-style: italic;
+            font-weight: 500;
+            text-align: center;
+            border-left: 6px solid #2ecc71; /* A strong accent border */
+            padding: 30px 40px;
+            margin: 40px auto; /* Adds space above and below */
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08); /* Soft, modern shadow */
+            max-width: 650px; /* Ensures it looks good on large screens */
+        }
+
+        /* Adds the giant decorative quotation mark */
+        .mantra-block::before {
+            content: '“'; /* The opening quote character */
+            position: absolute;
+            top: -10px;
+            left: 5px;
+            font-family: 'Times New Roman', serif; /* A classic font for quotes */
+            font-size: 6em; /* Huge size for dramatic effect */
+            color: rgba(46, 204, 113, 0.15); /* A faint version of the border color */
+            z-index: 0;
+        }
         @media (max-width: 768px) {
             .name-highlight {
                 font-size: 2em;
@@ -321,7 +349,11 @@
         <h2>Vision</h2>
         <div class="vision-content">
             <p>The world is drowning in data, yet the tools to harness it—Excel, Power BI, Tableau—are locked behind steep learning curves, complex formulas, and mandatory training. This is a colossal bottleneck, stifling innovation, wasting time, and gatekeeping opportunities for countless aspiring analysts. The status quo is unacceptable.</p>
-            <p>My vision is to obliterate these barriers with <a href="https://datatoyai.com" target="_blank">datatoyai.com</a>, a revolutionary platform that makes data analysis as intuitive as breathing. No prior expertise, no endless tutorials—just pure, immediate insight. With datatoyai.com, anyone, from novices to seasoned professionals, can dive into complex datasets and emerge with actionable results in minutes. Our mantra is simple: if you understand basic terminology, you’re ready to conquer data.</p>
+            <p>My vision is to obliterate these barriers with <a href="https://datatoyai.com" target="_blank">datatoyai.com</a>, a revolutionary platform that makes data analysis as intuitive as breathing. No prior expertise, no endless tutorials—just pure, immediate insight. With datatoyai.com, anyone, from novices to seasoned professionals, can dive into complex datasets and emerge with actionable results in minutes.</p>
+            
+            <blockquote class="mantra-block">
+                "Our mantra is simple: if you understand basic terminology, you’re ready to conquer data."
+            </blockquote>
             <h3>Why datatoyai.com Changes Everything</h3>
             <ul>
                 <li><strong>Effortless Data Prep</strong>: Raw data is instantly standardized, eliminating tedious setup.</li>
